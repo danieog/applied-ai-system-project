@@ -7,7 +7,8 @@ nicer table:
     pip install tabulate
 """
 
-from recommender import load_songs, recommend_songs
+from recommender import load_songs, Recommender, UserProfile, recommend_songs
+from rag_recommender import RAGRecommender
 
 # ── Optional tabulate for prettier tables ─────────────────────────────────
 try:

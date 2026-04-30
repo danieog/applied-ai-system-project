@@ -66,17 +66,12 @@ class Song:
 class UserProfile:
     """
     Represents a user's taste preferences.
-    Required by tests/test_recommender.py
     """
-    favorite_genre: str
-    favorite_mood: str
-    target_energy: float
-    likes_acoustic: bool
-    # New preference fields (all optional with sensible defaults)
-    preferred_decade: Optional[int] = None   # e.g. 2020; None = no era preference
-    preferred_mood_tags: List[str] = field(default_factory=list)  # e.g. ["upbeat","summer"]
-    allow_explicit: bool = True              # set False to penalise explicit tracks
-    min_popularity: int = 0                  # filter floor; songs below this are penalised
+    genre: str
+    mood: str
+    energy: float  # 1-10 scale
+    acousticness: float  # 1-10 scale
+    previously_liked: List[str] = field(default_factory=list)
 
 class Recommender:
     """
@@ -107,67 +102,38 @@ class Recommender:
 
     def _profile_to_dict(self, user: UserProfile) -> Dict:
         return {
-            "favorite_genre": user.favorite_genre,
-            "favorite_mood": user.favorite_mood,
-            "target_energy": user.target_energy,
-            "likes_acoustic": user.likes_acoustic,
-            "preferred_decade": user.preferred_decade,
-            "preferred_mood_tags": user.preferred_mood_tags,
-            "allow_explicit": user.allow_explicit,
-            "min_popularity": user.min_popularity,
+            "genre": user.genre,
+            "mood": user.mood,
+            "energy": user.energy,
+            "acousticness": user.acousticness,
+            "previously_liked": user.previously_liked,
         }
 
     def _rank(
         self,
         user: UserProfile,
         k: int,
-        strategy: str,
-        max_per_artist: int = 2,
-        max_per_genre: int = 3,
     ) -> List[Song]:
         user_dict  = self._profile_to_dict(user)
         id_to_song = {s.id: s for s in self.songs}
         scored = [
-            (self._song_to_dict(s), *score_song(user_dict, self._song_to_dict(s), strategy))
+            (self._song_to_dict(s), *score_song(user_dict, self._song_to_dict(s)))
             for s in self.songs
         ]
         ranked = sorted(scored, key=lambda x: x[1], reverse=True)
-        diverse = diversity_rerank(ranked, k, max_per_artist, max_per_genre)
+        diverse = diversity_rerank(ranked, k)
         return [id_to_song[sd["id"]] for sd, _, _ in diverse]
 
     def recommend(
         self,
         user: UserProfile,
         k: int = 5,
-        max_per_artist: int = 2,
-        max_per_genre: int = 3,
     ) -> List[Song]:
-        """Balanced strategy (default)."""
-        return self._rank(user, k, "balanced", max_per_artist, max_per_genre)
+        return self._rank(user, k)
 
-    def recommend_genre_first(
-        self,
-        user: UserProfile,
-        k: int = 5,
-        max_per_artist: int = 2,
-        max_per_genre: int = 3,
-    ) -> List[Song]:
-        """Genre-first strategy: genre match carries 45 % of the score."""
-        return self._rank(user, k, "genre_first", max_per_artist, max_per_genre)
-
-    def recommend_mood_first(
-        self,
-        user: UserProfile,
-        k: int = 5,
-        max_per_artist: int = 2,
-        max_per_genre: int = 3,
-    ) -> List[Song]:
-        """Mood-first strategy: mood match carries 40 % of the score."""
-        return self._rank(user, k, "mood_first", max_per_artist, max_per_genre)
-
-    def explain_recommendation(self, user: UserProfile, song: Song, strategy: str = "balanced") -> str:
+    def explain_recommendation(self, user: UserProfile, song: Song) -> str:
         user_dict = self._profile_to_dict(user)
-        _, reasons = score_song(user_dict, self._song_to_dict(song), strategy)
+        _, reasons = score_song(user_dict, self._song_to_dict(song))
         return "\n".join(reasons)
 
 def load_songs(csv_path: str) -> List[Dict]:
@@ -204,128 +170,70 @@ def load_songs(csv_path: str) -> List[Dict]:
 def score_song(
     user_prefs: Dict,
     song: Dict,
-    strategy: str = "balanced",
+    weights: Dict[str, float] = None,
 ) -> Tuple[float, List[str]]:
     """
-    Scores a single song against user preferences.
-    Required by recommend_songs() and src/main.py
-
-    strategy — one of "balanced" | "genre_first" | "mood_first"
-      balanced   : Genre 25 % / Mood 15 % / Energy 20 % / …
-      genre_first: Genre 45 % / Mood  8 % / Energy 15 % / …
-      mood_first : Genre  8 % / Mood 40 % / Energy 15 % / …
-    Plus feedback adjustment: liked +2, skipped -2 (capped to [0, 10]).
-    Explicit penalty: -3 if user disallows explicit content.
+    Scores a single song against user preferences using provided weights.
     """
-    weights = RANKING_STRATEGIES.get(strategy, RANKING_STRATEGIES["balanced"])
-    reasons = [f"[Strategy: {strategy}]"]
+    if weights is None:
+        weights = {
+            "genre": 0.3,
+            "mood": 0.25,
+            "energy": 0.25,
+            "acousticness": 0.15,
+            "feedback": 0.05,
+        }
+    
+    reasons = []
 
-    # --- Genre score (25%) — categorical exact match ---
-    if song['genre'] == user_prefs['favorite_genre']:
-        genre_score = 10
-        reasons.append(f"Genre matches your favorite '{user_prefs['favorite_genre']}' (+10)")
-    else:
-        genre_score = 0
-        reasons.append(f"Genre '{song['genre']}' doesn't match '{user_prefs['favorite_genre']}' (+0)")
+    # Normalize song features to 1-10 scale (CSV has 0-1)
+    song_energy = song['energy'] * 10
+    song_acousticness = song['acousticness'] * 10
 
-    # --- Mood score (15%) — categorical exact match ---
-    if song['mood'] == user_prefs['favorite_mood']:
-        mood_score = 10
-        reasons.append(f"Mood matches your favorite '{user_prefs['favorite_mood']}' (+10)")
-    else:
-        mood_score = 0
-        reasons.append(f"Mood '{song['mood']}' doesn't match '{user_prefs['favorite_mood']}' (+0)")
+    # Genre score
+    genre_score = 10 if song['genre'] == user_prefs.get('favorite_genre', user_prefs.get('genre', '')) else 0
+    reasons.append(f"Genre: {'match' if genre_score == 10 else 'no match'}")
 
-    # --- Energy score (20%) — distance-based ---
-    energy_diff = abs(user_prefs['target_energy'] - song['energy'])
-    energy_score = 10 - (10 * energy_diff)
-    reasons.append(
-        f"Energy {song['energy']:.2f} vs target {user_prefs['target_energy']:.2f} "
-        f"(diff={energy_diff:.2f}, score={energy_score:.2f})"
+    # Mood score
+    mood_score = 10 if song['mood'] == user_prefs.get('favorite_mood', user_prefs.get('mood', '')) else 0
+    reasons.append(f"Mood: {'match' if mood_score == 10 else 'no match'}")
+
+    # Energy score - distance based
+    energy_diff = abs(user_prefs.get('target_energy', user_prefs.get('energy', 5)) - song_energy)
+    energy_score = max(0, 10 - energy_diff)
+    reasons.append(f"Energy: {song_energy:.1f} vs {user_prefs.get('target_energy', user_prefs.get('energy', 5)):.1f} (diff={energy_diff:.1f})")
+
+    # Acousticness score
+    acoustic_diff = abs(user_prefs.get('acousticness', 5) - song_acousticness)
+    acoustic_score = max(0, 10 - acoustic_diff)
+    reasons.append(f"Acousticness: {song_acousticness:.1f} vs {user_prefs.get('acousticness', 5):.1f} (diff={acoustic_diff:.1f})")
+
+    # Feedback score
+    feedback_score = 0
+    if song['title'] in user_prefs.get('previously_liked', []):
+        feedback_score = 10
+        reasons.append("Liked before")
+    elif song.get('id') in user_prefs.get('likes', []):
+        feedback_score = 10
+        reasons.append("You liked this song before")
+    elif song.get('id') in user_prefs.get('skips', []):
+        feedback_score = -5  # penalty
+        reasons.append("You skipped this song before")
+
+    # Weighted total score
+    total_score = (
+        genre_score * weights.get('genre', 0) +
+        mood_score * weights.get('mood', 0) +
+        energy_score * weights.get('energy', 0) +
+        acoustic_score * weights.get('acousticness', 0) +
+        max(0, feedback_score) * weights.get('feedback', 0)
     )
 
-    # --- Acousticness score (10%) — distance-based ---
-    target_acoustic = 1.0 if user_prefs['likes_acoustic'] else 0.0
-    acoustic_diff = abs(target_acoustic - song['acousticness'])
-    acousticness_score = 10 - (10 * acoustic_diff)
-    reasons.append(
-        f"Acousticness {song['acousticness']:.2f} vs target {target_acoustic:.1f} "
-        f"(diff={acoustic_diff:.2f}, score={acousticness_score:.2f})"
-    )
+    # Apply feedback penalty if negative
+    if feedback_score < 0:
+        total_score += feedback_score
 
-    # --- Popularity score (10%) — higher popularity → higher score ---
-    popularity = song.get('popularity', 50)
-    popularity_score = popularity / 10.0  # 0–100 scaled to 0–10
-    min_pop = user_prefs.get('min_popularity', 0)
-    if popularity < min_pop:
-        popularity_score = max(0, popularity_score - 3)
-        reasons.append(
-            f"Popularity {popularity}/100 below your minimum {min_pop} "
-            f"(penalised, score={popularity_score:.1f})"
-        )
-    else:
-        reasons.append(f"Popularity {popularity}/100 (score={popularity_score:.1f})")
-
-    # --- Release decade score (10%) — era preference ---
-    preferred_decade = user_prefs.get('preferred_decade')
-    song_decade = song.get('release_decade', 2010)
-    if preferred_decade is not None:
-        decade_diff = abs(preferred_decade - song_decade) / 10  # each decade apart = 1 step
-        decade_score = max(0.0, 10.0 - decade_diff * 2)
-        reasons.append(
-            f"Release decade {song_decade}s vs preferred {preferred_decade}s "
-            f"(diff={int(decade_diff)} step(s), score={decade_score:.1f})"
-        )
-    else:
-        decade_score = 5.0  # neutral when no era preference set
-        reasons.append(f"Release decade {song_decade}s (no preference, score=5.0)")
-
-    # --- Mood tags score (10%) — tag overlap ---
-    preferred_tags = user_prefs.get('preferred_mood_tags', [])
-    song_tags_raw = song.get('mood_tags', '')
-    song_tags = [t.strip() for t in song_tags_raw.split('|') if t.strip()]
-    if preferred_tags and song_tags:
-        overlap = len(set(preferred_tags) & set(song_tags))
-        mood_tags_score = min(10.0, overlap * 10.0 / len(preferred_tags))
-        reasons.append(
-            f"Mood tags {song_tags} vs preferred {preferred_tags}: "
-            f"{overlap} match(es) (score={mood_tags_score:.1f})"
-        )
-    else:
-        mood_tags_score = 5.0  # neutral when no tags set
-        reasons.append(f"Mood tags {song_tags} (no preference, score=5.0)")
-
-    # --- Weighted base score (weights come from the chosen strategy) ---
-    base_score = (
-        genre_score        * weights["genre"] +
-        mood_score         * weights["mood"] +
-        energy_score       * weights["energy"] +
-        acousticness_score * weights["acousticness"] +
-        popularity_score   * weights["popularity"] +
-        decade_score       * weights["decade"] +
-        mood_tags_score    * weights["mood_tags"]
-    )
-
-    # --- Explicit content penalty ---
-    is_explicit = bool(song.get('explicit', 0))
-    allow_explicit = user_prefs.get('allow_explicit', True)
-    if is_explicit and not allow_explicit:
-        base_score = max(0.0, base_score - 3.0)
-        reasons.append("Explicit content (filtered by preference, -3)")
-
-    # --- Feedback adjustment (+/-2) ---
-    song_id = song.get('id')
-    if song_id in user_prefs.get('likes', []):
-        adjustment = 2
-        reasons.append("You liked this song before (+2)")
-    elif song_id in user_prefs.get('skips', []):
-        adjustment = -2
-        reasons.append("You skipped this song before (-2)")
-    else:
-        adjustment = 0
-
-    final_score = max(0.0, min(10.0, base_score + adjustment))
-    return (final_score, reasons)
+    return max(0, min(10, total_score)), reasons
 
 def diversity_rerank(
     ranked: List[Tuple[Dict, float, List[str]]],
@@ -395,18 +303,13 @@ def recommend_songs(
     songs: List[Dict],
     k: int = 5,
     strategy: str = "balanced",
-    max_per_artist: int = 2,
-    max_per_genre: int = 3,
 ) -> List[Tuple[Dict, float, str]]:
     """
     Functional implementation of the recommendation logic.
     Required by src/main.py
-
-    strategy       — "balanced" | "genre_first" | "mood_first"
-    max_per_artist — cap on songs from the same artist in the top-k
-    max_per_genre  — cap on songs from the same genre in the top-k
     """
-    scored = [(song, *score_song(user_prefs, song, strategy)) for song in songs]
+    weights = RANKING_STRATEGIES.get(strategy, RANKING_STRATEGIES["balanced"])
+    scored = [(song, *score_song(user_prefs, song, weights)) for song in songs]
     ranked = sorted(scored, key=lambda x: x[1], reverse=True)
-    diverse = diversity_rerank(ranked, k, max_per_artist, max_per_genre)
-    return [(song, score, "\n".join(reasons)) for song, score, reasons in diverse]
+    top_k = ranked[:k]
+    return [(song, score, "\n".join(reasons)) for song, score, reasons in top_k]
