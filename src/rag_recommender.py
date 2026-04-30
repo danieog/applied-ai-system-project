@@ -1,6 +1,6 @@
 import os
 from typing import List, Dict
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -21,7 +21,7 @@ class UserProfile:
     mood: str
     energy: float
     acousticness: float
-    previously_liked: List[str] = None
+    previously_liked: List[str] = field(default_factory=list)
 
 class RAGRecommender:
     def __init__(self):
@@ -41,6 +41,34 @@ class RAGRecommender:
             response += f"{i}. {song.title} by {song.artist} - {explanation}\n\n"
         
         return response.strip()
+
+    def _generate_explanation(self, user: UserProfile, song: Song) -> str:
+        """
+        Generate a simple explanation for why the song fits the user.
+        """
+        reasons = []
+        
+        if user.genre.lower() == song.genre.lower():
+            reasons.append(f"it matches your preferred {user.genre} genre")
+        
+        if user.mood.lower() == song.mood.lower():
+            reasons.append(f"it fits your {user.mood} mood")
+        
+        energy_diff = abs(user.energy - song.energy)
+        if energy_diff < 0.2:
+            reasons.append("it has a similar energy level to what you like")
+
+        acoustic_diff = abs(user.acousticness - song.acousticness)
+        if acoustic_diff < 0.2:
+            reasons.append("it matches your preference for acousticness")
+        
+        if user.previously_liked and any(liked.lower() in song.title.lower() or liked.lower() in song.artist.lower() for liked in user.previously_liked):
+            reasons.append("you might like similar songs")
+        
+        if reasons:
+            return f"This song is a great fit because {', and '.join(reasons)}."
+        else:
+            return "This song aligns well with your overall preferences."
 
     def _build_prompt(self, user: UserProfile, top_songs: List[Song]) -> str:
         """
