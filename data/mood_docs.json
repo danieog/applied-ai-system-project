@@ -28,5 +28,23 @@
     "type": "mood",
     "name": "energetic",
     "content": "Energetic music is optimised for physical and mental activation: fast tempos (120-160 BPM), high danceability, punchy production, and lyrics about movement, power, and momentum. Energy is high (0.75-1.0) but valence stays positive — energetic is exhilarating, not aggressive. Common in workout playlists, pre-game warmups, commute playlists, and dance floors. The hallmark is a persistent sense of forward propulsion: every element of the production pushes the listener to move, act, or engage."
+  },
+  {
+    "id": "mood_moody",
+    "type": "mood",
+    "name": "moody",
+    "content": "Moody music lives in an emotional grey zone — not quite sad, not quite upbeat, but charged with tension, introspection, or brooding atmosphere. Valence is mid-to-low (0.25-0.55). Tempos range broadly (80-150 BPM). Production favours dark textures: reverb-heavy guitars, minor key progressions, shadowy synths, and restrained dynamics. Songs in this category feel cinematic and complex — they reward close listening. Listeners reach for moody music during late nights, creative work, emotionally ambiguous moments, and when they want music that matches a complicated inner state."
+  },
+  {
+    "id": "mood_uplifting",
+    "type": "mood",
+    "name": "uplifting",
+    "content": "Uplifting music carries an emotional arc of hope, triumph, or spiritual elevation — distinct from simply 'happy' in that it often builds from struggle toward resolution. Valence is high (0.65-0.90) but with weight behind it. Tempos are moderate to fast (80-130 BPM). Production uses swelling strings, gospel-influenced harmonies, soaring choruses, and anthemic builds. Lyrics focus on perseverance, solidarity, and transcendence. Listeners turn to uplifting music after difficult periods, during motivation-seeking moments, and for music that makes them feel bigger than their problems."
+  },
+  {
+    "id": "mood_confident",
+    "type": "mood",
+    "name": "confident",
+    "content": "Confident music projects self-assurance, swagger, and authority through assertive vocals, bold production, and lyrics centered on identity, power, and independence. Valence is moderate to high (0.55-0.80). Tempos are mid-range (85-110 BPM) with a steady, unhurried groove that signals control rather than frenzy. Bass lines are prominent; arrangements are deliberate. This mood is common in hip-hop, R&B, and soul. Listeners use confident music to psych themselves up before important events, to feel empowered, or simply to inhabit a sense of self-possession and cool."
   }
 ]

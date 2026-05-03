@@ -34,5 +34,101 @@
     "type": "genre",
     "name": "jazz",
     "content": "Jazz is defined by improvisation, complex chord extensions (7ths, 9ths, 11ths), and swing rhythm. Instrumentation typically includes piano, double bass, drums, trumpet, and saxophone. Acousticness is very high (0.6-0.95). Energy and tempo vary widely — bebop is fast and intense (180+ BPM) while cool jazz and bossa nova are gentle and contemplative (60-100 BPM). Jazz rewards active listening: melodies shift, soloists respond to each other, and no two performances are identical. Listeners seek jazz for intellectual engagement, sophisticated ambience, dinner settings, and late-night introspection."
+  },
+  {
+    "id": "genre_hip_hop",
+    "type": "genre",
+    "name": "hip-hop",
+    "content": "Hip-hop is built on sampled or programmed beats, bass-heavy low end, and rap vocals that prioritize rhythmic delivery and wordplay. Tempos typically range from 80 to 105 BPM in classic styles, with trap pushing up to 140+ BPM via hi-hat rolls and 808 bass. Energy ranges from mellow and introspective to explosive and aggressive. Acousticness is very low. Lyricism covers street life, ambition, social commentary, and personal narrative. Listeners reach for hip-hop during workouts, commutes, hype sessions, and when they want music with substance and swagger."
+  },
+  {
+    "id": "genre_rnb",
+    "type": "genre",
+    "name": "R&B",
+    "content": "R&B (Rhythm and Blues) centers on soulful vocals, groove-driven rhythm sections, and emotionally expressive songwriting about love, relationships, and personal identity. Tempos range from slow jams (70-90 BPM) to uptempo dance tracks (100-120 BPM). Production blends live instrumentation with programmed beats and lush harmonies. Acousticness is moderate (0.1-0.5). High danceability and vocal range are hallmarks. Listeners turn to R&B for romantic settings, late-night moods, and music that connects deeply with emotion."
+  },
+  {
+    "id": "genre_soul",
+    "type": "genre",
+    "name": "soul",
+    "content": "Soul music grew from gospel and R&B, emphasizing powerful, emotionally raw vocals and deeply felt lyrics about love, struggle, and resilience. Instrumentation includes horns, organ, electric piano, and live rhythm sections. Tempos vary from slow, aching ballads to upbeat, foot-stomping grooves (60-130 BPM). Acousticness is moderate to high. Valence can swing from joyful and celebratory to heartbroken and cathartic. Soul is for listeners who want music that feels honest and human — with Aretha Franklin, Stevie Wonder, and Otis Redding as defining voices."
+  },
+  {
+    "id": "genre_alternative",
+    "type": "genre",
+    "name": "alternative",
+    "content": "Alternative rock emerged in the 1980s and 1990s as a reaction to mainstream rock, prioritizing artistic experimentation, introspection, and emotional authenticity over commercial polish. Tempos range from 70 to 160 BPM; production ranges from dreamy and reverb-drenched to abrasive and distorted. Lyrically, alternative explores alienation, anxiety, identity, and longing. Energy is mid-to-high (0.5-0.85). Key artists include Radiohead, The Cure, and R.E.M. Listeners seek alternative when they want music that feels intelligent, honest, and slightly outside the mainstream."
+  },
+  {
+    "id": "genre_folk",
+    "type": "genre",
+    "name": "folk",
+    "content": "Folk music is defined by acoustic instrumentation — guitar, banjo, fiddle, and vocals — and storytelling lyrics rooted in human experience, history, and social commentary. Acousticness is very high (0.7-1.0). Tempos are gentle to moderate (60-110 BPM) and energy is low. Arrangements are sparse, leaving space for the lyric and melody to breathe. The intimacy of folk makes it ideal for quiet evenings, introspective listening, and acoustic performances. Artists like Bob Dylan, Joni Mitchell, and Nick Drake define the genre's emotional honesty."
+  },
+  {
+    "id": "genre_folk_rock",
+    "type": "genre",
+    "name": "folk rock",
+    "content": "Folk rock fuses the acoustic storytelling of folk with the electric energy of rock, producing songs that are both lyrically rich and sonically driving. Acousticness is moderate (0.4-0.8). Tempos range from 80 to 130 BPM. Production balances strummed acoustic guitars with electric lead lines and live drums. Emotionally, folk rock spans nostalgic and reflective to rousing and anthemic. Green Day's 'Good Riddance' and Bob Dylan's electric period exemplify the genre's range. Ideal for thoughtful listeners who want depth alongside energy."
+  },
+  {
+    "id": "genre_synthwave",
+    "type": "genre",
+    "name": "synthwave",
+    "content": "Synthwave is a retro-futuristic electronic genre that evokes the aesthetic of 1980s science fiction and action films through analog synthesizers, gated reverb drums, and pulsing basslines. Tempos sit around 100-140 BPM. Energy is high (0.75-0.95) while acousticness is near zero. The mood swings between euphoric nostalgia and dark cinematic tension. Artists like The Weeknd's 'Blinding Lights' brought synthwave-influenced production to mainstream pop. Listeners use it for late-night drives, nostalgic escapes, and high-energy focus sessions."
+  },
+  {
+    "id": "genre_synth_pop",
+    "type": "genre",
+    "name": "synth-pop",
+    "content": "Synth-pop emerged in the late 1970s and 1980s, replacing traditional rock instrumentation with synthesizers, sequencers, and drum machines to create polished, melodic pop. Tempos range from 110 to 170 BPM. Energy is high and acousticness is very low. The sound is clean, futuristic, and hook-driven with an emphasis on melody over complexity. Emotional range spans euphoric to melancholic. Artists like a-ha, Depeche Mode, and Erasure defined the genre. Listeners enjoy synth-pop for its nostalgic, danceable energy and distinctly '80s sonic palette."
+  },
+  {
+    "id": "genre_funk",
+    "type": "genre",
+    "name": "funk",
+    "content": "Funk is built on rhythmic interplay between bass, drums, guitar, and horns, with an emphasis on the groove over melody or harmony. The bass guitar is the lead instrument. Tempos range from 95 to 130 BPM with tight, syncopated rhythms and very high danceability. Energy is high (0.8-1.0), valence is positive and celebratory. Funk was pioneered by James Brown and Parliament-Funkadelic and deeply influenced hip-hop, R&B, and pop. Listeners reach for funk when they want irresistible physical movement — music that makes it impossible to stand still."
+  },
+  {
+    "id": "genre_reggae",
+    "type": "genre",
+    "name": "reggae",
+    "content": "Reggae originated in Jamaica in the late 1960s, characterized by offbeat guitar strumming (the 'skank'), heavy bass, and a laid-back tempo of 60-90 BPM. Acousticness is moderate to high. Energy is low to moderate, and the mood is warm, positive, and communal. Lyrically, reggae addresses love, spirituality, social justice, and Rastafarian themes. Bob Marley is the defining voice. The genre's unhurried pace and positive valence make it ideal for outdoor relaxation, summer moods, and listeners seeking music with both warmth and social meaning."
+  },
+  {
+    "id": "genre_country",
+    "type": "genre",
+    "name": "country",
+    "content": "Country music centers on acoustic and electric guitar, fiddle, pedal steel guitar, and plainspoken vocals that tell stories about love, loss, home, and working-class life. Acousticness is moderate to high (0.4-0.8). Tempos range from slow ballads (60-80 BPM) to uptempo honky-tonk and bluegrass (130-170 BPM). Valence varies widely. Authenticity and narrative clarity are core values. Johnny Cash, Dolly Parton, and Hank Williams are foundational. Listeners turn to country for its emotional directness, storytelling depth, and rootsy, organic sound."
+  },
+  {
+    "id": "genre_grunge",
+    "type": "genre",
+    "name": "grunge",
+    "content": "Grunge emerged from Seattle in the late 1980s, combining the heaviness of metal with the raw simplicity of punk. Distorted, downtuned guitars, sludgy bass, and loud-quiet-loud dynamics define the sound. Energy is high (0.7-1.0), acousticness is very low, and the emotional tone leans toward angst, alienation, and catharsis. Tempos range from 90 to 140 BPM. Valence is low to moderate. Nirvana, Soundgarden, and Pearl Jam are the genre's defining voices. Listeners reach for grunge when they need emotional release, raw power, and music that doesn't pretend everything is fine."
+  },
+  {
+    "id": "genre_trip_hop",
+    "type": "genre",
+    "name": "trip-hop",
+    "content": "Trip-hop is a downtempo electronic genre from Bristol, England, blending hip-hop beats (70-100 BPM) with cinematic atmospheres, jazz samples, and haunting female vocals. Energy is low to moderate (0.3-0.65), acousticness is mid-range, and danceability is low. The mood is predominantly dark, brooding, and introspective — perfect for late-night solitude. Massive Attack, Portishead, and Tricky pioneered the sound. Trip-hop is used as a backdrop for film-like listening experiences, creative work, and emotional processing in a way that feels cinematic rather than heavy."
+  },
+  {
+    "id": "genre_jpop",
+    "type": "genre",
+    "name": "J-pop",
+    "content": "J-pop (Japanese pop) is characterized by high-energy, intricately produced songs with catchy melodies, upbeat tempos (120-145 BPM), and idol group performance culture. Acousticness is low, danceability and energy are high (0.75-0.95). The sound is bright, polished, and choreography-friendly with layered vocal harmonies. Groups like Morning Musume pioneered the idol era. Lyrically, J-pop covers themes of youth, love, friendship, and optimism. Listeners enjoy it for its infectious energy, visual performance culture, and the unique blend of Western pop structure with Japanese melodic sensibility."
+  },
+  {
+    "id": "genre_kpop",
+    "type": "genre",
+    "name": "K-pop",
+    "content": "K-pop (Korean pop) is a meticulously produced genre blending pop, hip-hop, R&B, and electronic music with striking visual aesthetics and highly choreographed performances. Tempos range from 100 to 150 BPM; energy and danceability are very high (0.8-1.0). Songs often switch between rap verses, melodic choruses, and instrumental breakdowns within a single track. Acousticness is very low. Mood ranges from sweet and bubbly to dark and fierce. Artists like LOONA and EXO represent the genre's range. Listeners are drawn to K-pop for its production quality, immersive fan culture, and high-energy performances."
+  },
+  {
+    "id": "genre_punk_rock",
+    "type": "genre",
+    "name": "punk rock",
+    "content": "Punk rock is fast, loud, and deliberately stripped-down — three chords, aggressive vocals, and tempos often exceeding 160-200 BPM. Energy is at maximum (0.85-1.0). Acousticness is near zero and danceability is moderate. Lyrically, punk is political, angry, and anti-establishment, with a DIY ethos that rejects corporate polish. Green Day and The Clash brought punk to mainstream audiences. Valence can be triumphant or bitter. Listeners reach for punk rock during frustration, political anger, or when they want music that feels raw, fast, and uncompromising."
   }
 ]

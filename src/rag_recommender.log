@@ -150,3 +150,9 @@
 2026-05-03 18:56:01,434 INFO HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
 2026-05-03 18:56:01,465 INFO HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
 2026-05-03 18:56:03,309 INFO Context index built with 11 documents
+2026-05-03 18:59:27,033 INFO Sending prompt to Groq (1869 chars, 2 context docs)
+2026-05-03 18:59:28,345 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-03 18:59:28,402 INFO Groq response received (958 chars)
+2026-05-03 19:00:29,362 INFO Sending prompt to Groq (1870 chars, 2 context docs)
+2026-05-03 19:00:30,245 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-03 19:00:30,248 INFO Groq response received (887 chars)
