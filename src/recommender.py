@@ -163,6 +163,7 @@ def load_songs(csv_path: str) -> List[Dict]:
                 "mood_tags": row.get("mood_tags", ""),
                 "explicit": int(row.get("explicit", 0)),
                 "duration_sec": int(row.get("duration_sec", 210)),
+                "youtube_url": row.get("youtube_url", ""),
             }
             songs.append(song_dict)
     return songs
@@ -180,8 +181,7 @@ def score_song(
             "genre": 0.3,
             "mood": 0.25,
             "energy": 0.25,
-            "acousticness": 0.15,
-            "feedback": 0.05,
+            "acousticness": 0.20,
         }
     
     reasons = []
@@ -220,18 +220,19 @@ def score_song(
         feedback_score = -5  # penalty
         reasons.append("You skipped this song before")
 
-    # Weighted total score
+    # Weighted total score (feedback applied as flat bonus/penalty below)
     total_score = (
         genre_score * weights.get('genre', 0) +
         mood_score * weights.get('mood', 0) +
         energy_score * weights.get('energy', 0) +
-        acoustic_score * weights.get('acousticness', 0) +
-        max(0, feedback_score) * weights.get('feedback', 0)
+        acoustic_score * weights.get('acousticness', 0)
     )
 
-    # Apply feedback penalty if negative
-    if feedback_score < 0:
-        total_score += feedback_score
+    # Flat +1 bonus for liked songs, -1 penalty for skipped songs
+    if feedback_score > 0:
+        total_score = min(10, total_score + 1)
+    elif feedback_score < 0:
+        total_score = max(0, total_score - 1)
 
     return max(0, min(10, total_score)), reasons
 

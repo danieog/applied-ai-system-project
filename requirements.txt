@@ -2,3 +2,6 @@ pandas
 pytest
 python-dotenv
 streamlit
+groq
+chromadb
+sentence-transformers

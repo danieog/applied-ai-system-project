@@ -1,0 +1,32 @@
+[
+  {
+    "id": "mood_happy",
+    "type": "mood",
+    "name": "happy",
+    "content": "Happy music is characterised by major keys, bright timbres, and upbeat tempos that signal joy and celebration. Valence (musical positivity) is high (0.7-1.0). Lyrics typically focus on love, friendship, optimism, and good times. Production choices — clapping, bright synths, soaring vocals — reinforce a sense of lightness and uplift. Happy music is ideal for morning routines, social gatherings, celebrations, and combating low energy. Listeners report it boosts motivation and creates a sense of warmth and connection."
+  },
+  {
+    "id": "mood_chill",
+    "type": "mood",
+    "name": "chill",
+    "content": "Chill music prioritises relaxation, ease, and a sense of unhurried calm. Tempos are slow to moderate (60-100 BPM), dynamics are restrained, and arrangements leave space — silence and texture are used intentionally. Valence is mid-range: not sad, but not aggressively upbeat either. Instrumentation leans acoustic or lightly electronic. Chill music is the default companion for studying, reading, winding down after work, and low-key social settings. The goal is to reduce mental load, not to demand attention."
+  },
+  {
+    "id": "mood_intense",
+    "type": "mood",
+    "name": "intense",
+    "content": "Intense music creates heightened emotional and physical arousal through fast tempos (140+ BPM), heavy distortion, driving rhythms, and aggressive dynamics. Energy is at maximum (0.85-1.0), valence can swing from triumphant to dark. This mood encompasses everything from metal and hard rock to intense orchestral compositions and high-BPM electronic music. Listeners reach for intense music during heavy workouts, competitive gaming, high-stress deadlines, and emotional catharsis. The music matches and amplifies the listener's adrenaline state."
+  },
+  {
+    "id": "mood_sad",
+    "type": "mood",
+    "name": "sad",
+    "content": "Sad music uses minor keys, slow tempos (50-90 BPM), sparse arrangements, and emotionally vulnerable vocals to evoke longing, grief, or melancholy. Valence is low (0.0-0.35). Paradoxically, listeners often find sad music comforting: it validates difficult emotions and provides a safe container for processing them. Common in breakup playlists, reflective evenings, and periods of personal transition. Instruments like piano, strings, and acoustic guitar dominate. The production is intimate — close-miked vocals, minimal reverb, quiet dynamics."
+  },
+  {
+    "id": "mood_energetic",
+    "type": "mood",
+    "name": "energetic",
+    "content": "Energetic music is optimised for physical and mental activation: fast tempos (120-160 BPM), high danceability, punchy production, and lyrics about movement, power, and momentum. Energy is high (0.75-1.0) but valence stays positive — energetic is exhilarating, not aggressive. Common in workout playlists, pre-game warmups, commute playlists, and dance floors. The hallmark is a persistent sense of forward propulsion: every element of the production pushes the listener to move, act, or engage."
+  }
+]

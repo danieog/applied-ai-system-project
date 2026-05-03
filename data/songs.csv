@@ -1,21 +1,201 @@
-id,title,artist,genre,mood,energy,tempo_bpm,valence,danceability,acousticness,popularity,release_decade,mood_tags,explicit,duration_sec
-1,Sunrise City,Neon Echo,pop,happy,0.82,118,0.84,0.79,0.18,78,2020,upbeat|cheerful|summer,0,195
-2,Midnight Coding,LoRoom,lofi,chill,0.42,78,0.56,0.62,0.71,65,2020,focused|calm|nostalgic,0,240
-3,Storm Runner,Voltline,rock,intense,0.91,152,0.48,0.66,0.10,72,2010,driving|aggressive|powerful,0,210
-4,Library Rain,Paper Lanterns,lofi,chill,0.35,72,0.60,0.58,0.86,58,2020,calm|rainy|introspective,0,255
-5,Gym Hero,Max Pulse,pop,intense,0.93,132,0.77,0.88,0.05,85,2020,motivational|pumping|high-octane,0,185
-6,Spacewalk Thoughts,Orbit Bloom,ambient,chill,0.28,60,0.65,0.41,0.92,42,2020,ethereal|dreamy|meditative,0,310
-7,Coffee Shop Stories,Slow Stereo,jazz,relaxed,0.37,90,0.71,0.54,0.89,55,2010,cozy|warm|nostalgic,0,290
-8,Night Drive Loop,Neon Echo,synthwave,moody,0.75,110,0.49,0.73,0.22,70,2010,nocturnal|atmospheric|cinematic,0,225
-9,Focus Flow,LoRoom,lofi,focused,0.40,80,0.59,0.60,0.78,62,2020,productive|calm|steady,0,245
-10,Rooftop Lights,Indigo Parade,indie pop,happy,0.76,124,0.81,0.82,0.35,74,2020,uplifting|summery|playful,0,200
-11,Desert Mirage,Sahara Beats,electronic,energetic,0.88,140,0.75,0.85,0.12,80,2020,driving|hypnotic|festival,0,215
-12,Heartbreak Highway,Country Roads,country,sad,0.45,95,0.25,0.55,0.78,68,2010,melancholic|emotional|lonesome,0,235
-13,Urban Pulse,Street Vibe,hip-hop,confident,0.92,98,0.68,0.90,0.08,88,2020,bold|street|empowering,1,195
-14,Serenade Under Stars,Classical Dreams,classical,romantic,0.30,70,0.80,0.40,0.95,45,2000,romantic|tender|lush,0,320
-15,Island Rhythms,Tropical Wave,reggae,joyful,0.70,110,0.85,0.78,0.25,66,2010,sunny|carefree|tropical,0,220
-16,Thunder Fury,Metal Storm,metal,angry,0.96,160,0.20,0.65,0.05,75,2010,aggressive|headbanging|furious,1,205
-17,Ocean Breeze,Coastal Harmony,folk,peaceful,0.50,85,0.70,0.60,0.82,52,2010,serene|natural|contemplative,0,270
-18,Cyber Dreams,Future Synth,electronic,adventurous,0.80,130,0.60,0.75,0.15,77,2020,futuristic|exploratory|immersive,0,210
-19,Soulful Nights,Blues Echo,blues,melancholic,0.55,100,0.35,0.50,0.70,50,2000,soulful|bittersweet|late-night,0,265
-20,Victory Anthem,Champions Unite,rock,uplifting,0.90,145,0.90,0.88,0.10,90,2010,triumphant|epic|inspirational,0,215
+id,title,artist,genre,mood,energy,tempo_bpm,valence,danceability,acousticness,popularity,release_decade,mood_tags,explicit,duration_sec,youtube_url
+1,Sweet Child O' Mine,Guns N' Roses,rock,intense,0.86,125,0.66,0.74,0.08,95,1980,passionate|iconic|riff,0,356,https://www.youtube.com/results?search_query=Guns+N+Roses+Sweet+Child+O+Mine+audio
+2,Africa,Toto,rock,happy,0.74,93,0.78,0.72,0.28,90,1980,nostalgic|anthemic|feel-good,0,295,https://www.youtube.com/results?search_query=Toto+Africa+audio
+3,Take On Me,a-ha,synth-pop,happy,0.80,169,0.88,0.84,0.10,91,1980,nostalgic|80s|catchy,0,225,https://www.youtube.com/results?search_query=a-ha+Take+On+Me+audio
+4,Blue Monday,New Order,electronic,moody,0.85,130,0.42,0.82,0.05,90,1980,dark|dance|iconic,0,469,https://www.youtube.com/results?search_query=New+Order+Blue+Monday+audio
+5,Enjoy the Silence,Depeche Mode,electronic,sad,0.72,110,0.35,0.73,0.08,89,1990,melancholic|ethereal|synth,0,268,https://www.youtube.com/results?search_query=Depeche+Mode+Enjoy+the+Silence+audio
+6,Just Like Heaven,The Cure,alternative,happy,0.77,138,0.80,0.78,0.12,86,1980,jangly|nostalgic|indie,0,219,https://www.youtube.com/results?search_query=The+Cure+Just+Like+Heaven+audio
+7,Roxanne,The Police,rock,intense,0.80,132,0.55,0.72,0.12,88,1970,tense|raw|reggae-punk,0,192,https://www.youtube.com/results?search_query=The+Police+Roxanne+audio
+8,Every Breath You Take,The Police,rock,moody,0.68,117,0.42,0.62,0.30,93,1980,obsessive|haunting|iconic,0,255,https://www.youtube.com/results?search_query=The+Police+Every+Breath+You+Take+audio
+9,Girls Just Want to Have Fun,Cyndi Lauper,pop,happy,0.82,120,0.88,0.82,0.12,90,1980,fun|carefree|80s,0,233,https://www.youtube.com/results?search_query=Cyndi+Lauper+Girls+Just+Want+to+Have+Fun+audio
+10,Total Eclipse of the Heart,Bonnie Tyler,pop,intense,0.76,100,0.55,0.60,0.25,88,1980,dramatic|emotional|power-ballad,0,322,https://www.youtube.com/results?search_query=Bonnie+Tyler+Total+Eclipse+of+the+Heart+audio
+11,Gold Digger,Kanye West,hip-hop,energetic,0.88,118,0.72,0.85,0.06,93,2000,bold|catchy|samples,1,207,https://www.youtube.com/results?search_query=Kanye+West+Gold+Digger+audio
+12,Stronger,Kanye West,hip-hop,energetic,0.87,104,0.68,0.82,0.05,91,2000,futuristic|bold|dance,0,311,https://www.youtube.com/results?search_query=Kanye+West+Stronger+audio
+13,Take Five,Dave Brubeck Quartet,jazz,chill,0.48,168,0.62,0.55,0.70,88,1950,cool|timeless|instrumental,0,324,https://www.youtube.com/results?search_query=Dave+Brubeck+Quartet+Take+Five+audio
+14,What a Wonderful World,Louis Armstrong,jazz,happy,0.28,70,0.88,0.38,0.72,90,1960,warm|nostalgic|gentle,0,138,https://www.youtube.com/results?search_query=Louis+Armstrong+What+a+Wonderful+World+audio
+15,So What,Miles Davis,jazz,chill,0.45,136,0.58,0.48,0.68,86,1950,cool|modal|timeless,0,556,https://www.youtube.com/results?search_query=Miles+Davis+So+What+audio
+16,Maps,Yeah Yeah Yeahs,indie pop,sad,0.72,128,0.38,0.65,0.22,84,2000,raw|emotional|indie,0,224,https://www.youtube.com/results?search_query=Yeah+Yeah+Yeahs+Maps+audio
+17,1979,The Smashing Pumpkins,alternative,chill,0.65,103,0.68,0.72,0.20,86,1990,nostalgic|dreamy|indie,0,264,https://www.youtube.com/results?search_query=Smashing+Pumpkins+1979+audio
+18,Float On,Modest Mouse,indie pop,happy,0.73,135,0.74,0.74,0.18,82,2000,optimistic|breezy|indie,0,210,https://www.youtube.com/results?search_query=Modest+Mouse+Float+On+audio
+19,Such Great Heights,The Postal Service,indie pop,happy,0.75,130,0.80,0.76,0.12,82,2000,hopeful|warm|electronic,0,268,https://www.youtube.com/results?search_query=The+Postal+Service+Such+Great+Heights+audio
+20,Heartbeats,José González,folk,chill,0.38,90,0.72,0.52,0.88,80,2000,intimate|delicate|acoustic,0,171,https://www.youtube.com/results?search_query=Jose+Gonzalez+Heartbeats+audio
+21,Lovefool,The Cardigans,pop,happy,0.76,126,0.89,0.79,0.22,88,1990,romantic|playful|carefree,0,203,https://www.youtube.com/results?search_query=The+Cardigans+Lovefool+audio
+22,My Favourite Game,The Cardigans,rock,intense,0.83,143,0.42,0.72,0.10,82,1990,rebellious|driving|bittersweet,0,212,https://www.youtube.com/results?search_query=The+Cardigans+My+Favourite+Game+audio
+23,Erase/Rewind,The Cardigans,pop,chill,0.62,104,0.68,0.74,0.28,76,1990,reflective|smooth|indie,0,228,https://www.youtube.com/results?search_query=The+Cardigans+Erase+Rewind+audio
+24,Carnival,The Cardigans,pop,happy,0.71,128,0.82,0.77,0.30,72,1990,playful|upbeat|whimsical,0,197,https://www.youtube.com/results?search_query=The+Cardigans+Carnival+audio
+25,Hanging Around,The Cardigans,indie pop,chill,0.58,100,0.61,0.67,0.35,70,1990,melancholic|indie|breezy,0,218,https://www.youtube.com/results?search_query=The+Cardigans+Hanging+Around+audio
+26,Communication,The Cardigans,pop,sad,0.55,96,0.38,0.63,0.42,68,2000,longing|introspective|nocturnal,0,244,https://www.youtube.com/results?search_query=The+Cardigans+Communication+audio
+27,99 Problems,Jay-Z,hip-hop,intense,0.90,94,0.43,0.78,0.05,92,2000,rebellious|bold|street,1,228,https://www.youtube.com/results?search_query=Jay-Z+99+Problems+audio
+28,Empire State of Mind,Jay-Z,hip-hop,uplifting,0.80,86,0.72,0.75,0.12,91,2000,triumphant|anthemic|urban,0,276,https://www.youtube.com/results?search_query=Jay-Z+Empire+State+of+Mind+audio
+29,Hard Knock Life (Ghetto Anthem),Jay-Z,hip-hop,energetic,0.86,98,0.65,0.84,0.07,89,1990,bold|street|samples,1,233,https://www.youtube.com/results?search_query=Jay-Z+Hard+Knock+Life+audio
+30,IZZO (H.O.V.A.),Jay-Z,hip-hop,confident,0.84,100,0.71,0.82,0.08,87,2000,smooth|bold|catchy,1,234,https://www.youtube.com/results?search_query=Jay-Z+IZZO+audio
+31,Big Pimpin',Jay-Z,hip-hop,energetic,0.85,100,0.74,0.88,0.10,86,1990,party|carefree|bass-heavy,1,254,https://www.youtube.com/results?search_query=Jay-Z+Big+Pimpin+audio
+32,Dirt Off Your Shoulder,Jay-Z,hip-hop,confident,0.83,88,0.67,0.81,0.06,84,2000,cool|swaggering|minimalist,1,225,https://www.youtube.com/results?search_query=Jay-Z+Dirt+Off+Your+Shoulder+audio
+33,Run This Town,Jay-Z,hip-hop,intense,0.87,140,0.48,0.77,0.08,83,2000,powerful|dark|anthemic,1,240,https://www.youtube.com/results?search_query=Jay-Z+Run+This+Town+audio
+34,Crazy in Love,Beyoncé,R&B,energetic,0.88,100,0.82,0.86,0.07,95,2000,passionate|fiery|iconic,0,236,https://www.youtube.com/results?search_query=Beyonce+Crazy+in+Love+audio
+35,Single Ladies (Put a Ring on It),Beyoncé,pop,energetic,0.92,194,0.78,0.89,0.05,94,2000,empowering|fierce|dance,0,232,https://www.youtube.com/results?search_query=Beyonce+Single+Ladies+audio
+36,Halo,Beyoncé,pop,happy,0.72,84,0.88,0.67,0.35,93,2000,romantic|soaring|emotional,0,263,https://www.youtube.com/results?search_query=Beyonce+Halo+audio
+37,Irreplaceable,Beyoncé,R&B,confident,0.70,93,0.71,0.73,0.28,90,2000,empowering|independent|catchy,0,231,https://www.youtube.com/results?search_query=Beyonce+Irreplaceable+audio
+38,Hold Up,Beyoncé,pop,happy,0.79,112,0.85,0.80,0.18,87,2010,joyful|reggae-influenced|triumphant,0,218,https://www.youtube.com/results?search_query=Beyonce+Hold+Up+audio
+39,Formation,Beyoncé,hip-hop,intense,0.87,130,0.62,0.85,0.10,88,2010,fierce|political|powerful,1,216,https://www.youtube.com/results?search_query=Beyonce+Formation+audio
+40,Love on Top,Beyoncé,R&B,happy,0.84,182,0.91,0.84,0.15,86,2010,joyful|retro|exuberant,0,268,https://www.youtube.com/results?search_query=Beyonce+Love+on+Top+audio
+41,Drunk in Love,Beyoncé,R&B,intense,0.80,130,0.60,0.74,0.12,85,2010,passionate|sensual|moody,1,330,https://www.youtube.com/results?search_query=Beyonce+Drunk+in+Love+audio
+42,Love Machine,Morning Musume,J-pop,happy,0.85,140,0.88,0.87,0.10,88,1990,bubbly|upbeat|iconic,0,277,https://www.youtube.com/results?search_query=Morning+Musume+Love+Machine+audio
+43,Renai Revolution 21,Morning Musume,J-pop,happy,0.83,136,0.86,0.85,0.12,84,2000,energetic|cheerful|dance,0,274,https://www.youtube.com/results?search_query=Morning+Musume+Renai+Revolution+21+audio
+44,Koi no Dance Site,Morning Musume,J-pop,energetic,0.81,132,0.80,0.83,0.14,82,2000,playful|summer|catchy,0,266,https://www.youtube.com/results?search_query=Morning+Musume+Koi+no+Dance+Site+audio
+45,The Peace!,Morning Musume,J-pop,happy,0.82,138,0.84,0.84,0.11,80,2000,fun|lively|youthful,0,280,https://www.youtube.com/results?search_query=Morning+Musume+The+Peace+audio
+46,Shabondama,Morning Musume,J-pop,sad,0.68,118,0.42,0.75,0.20,77,2000,emotional|dramatic|bittersweet,0,294,https://www.youtube.com/results?search_query=Morning+Musume+Shabondama+audio
+47,Go Girl ~Koi no Victory~,Morning Musume,J-pop,energetic,0.84,142,0.82,0.85,0.09,78,2000,sporty|upbeat|victory,0,266,https://www.youtube.com/results?search_query=Morning+Musume+Go+Girl+Koi+no+Victory+audio
+48,Morning Coffee,Morning Musume,J-pop,happy,0.70,120,0.79,0.76,0.22,75,1990,cute|sweet|morning,0,257,https://www.youtube.com/results?search_query=Morning+Musume+Morning+Coffee+audio
+49,Happy Summer Wedding,Morning Musume,J-pop,happy,0.78,134,0.88,0.80,0.15,74,2000,celebratory|summery|cheerful,0,269,https://www.youtube.com/results?search_query=Morning+Musume+Happy+Summer+Wedding+audio
+50,I WISH,Morning Musume,J-pop,happy,0.76,126,0.84,0.79,0.18,76,2000,hopeful|bright|youthful,0,264,https://www.youtube.com/results?search_query=Morning+Musume+I+WISH+audio
+51,Roman ~My Dear Boy~,Morning Musume,J-pop,energetic,0.80,138,0.76,0.83,0.12,73,2000,intense|dramatic|dance,0,281,https://www.youtube.com/results?search_query=Morning+Musume+Roman+My+Dear+Boy+audio
+52,Hi High,LOONA,K-pop,happy,0.84,135,0.88,0.86,0.10,83,2010,vibrant|summery|euphoric,0,209,https://www.youtube.com/results?search_query=LOONA+Hi+High+audio
+53,So What,LOONA,K-pop,energetic,0.90,148,0.72,0.88,0.06,82,2020,powerful|bold|chaotic,0,188,https://www.youtube.com/results?search_query=LOONA+So+What+audio
+54,Butterfly,LOONA,pop,chill,0.65,100,0.74,0.72,0.30,80,2010,dreamy|ethereal|hopeful,0,231,https://www.youtube.com/results?search_query=LOONA+Butterfly+audio
+55,Eclipse,Kim Lip,K-pop,intense,0.82,128,0.55,0.82,0.12,78,2010,dark|fierce|magnetic,0,215,https://www.youtube.com/results?search_query=Kim+Lip+Eclipse+audio
+56,Heart Attack,Chuu,K-pop,happy,0.79,130,0.91,0.82,0.15,82,2010,sweet|bubbly|joyful,0,198,https://www.youtube.com/results?search_query=Chuu+Heart+Attack+audio
+57,Girl Front,ODD EYE CIRCLE,K-pop,energetic,0.87,140,0.75,0.88,0.08,77,2010,futuristic|fierce|dance,0,212,https://www.youtube.com/results?search_query=ODD+EYE+CIRCLE+Girl+Front+audio
+58,Egoist,Olivia Hye,K-pop,intense,0.78,120,0.48,0.78,0.18,75,2010,dark|rebellious|emotional,0,218,https://www.youtube.com/results?search_query=Olivia+Hye+Egoist+audio
+59,Why Not,LOONA,K-pop,energetic,0.88,144,0.76,0.88,0.07,78,2020,fierce|powerful|fun,0,197,https://www.youtube.com/results?search_query=LOONA+Why+Not+audio
+60,One More Time,Daft Punk,electronic,happy,0.86,123,0.87,0.89,0.08,95,2000,euphoric|dance|nostalgic,0,320,https://www.youtube.com/results?search_query=Daft+Punk+One+More+Time+audio
+61,Get Lucky,Daft Punk,pop,happy,0.83,116,0.86,0.85,0.11,94,2010,groovy|summer|feel-good,0,369,https://www.youtube.com/results?search_query=Daft+Punk+Get+Lucky+audio
+62,Around the World,Daft Punk,electronic,energetic,0.88,121,0.77,0.91,0.05,89,1990,hypnotic|repetitive|dance,0,428,https://www.youtube.com/results?search_query=Daft+Punk+Around+the+World+audio
+63,Harder Better Faster Stronger,Daft Punk,electronic,energetic,0.87,108,0.72,0.87,0.04,90,2000,robotic|energizing|iconic,0,225,https://www.youtube.com/results?search_query=Daft+Punk+Harder+Better+Faster+Stronger+audio
+64,Instant Crush,Daft Punk,pop,sad,0.72,110,0.45,0.72,0.22,85,2010,melancholic|dreamy|nocturnal,0,337,https://www.youtube.com/results?search_query=Daft+Punk+Instant+Crush+audio
+65,Creep,Radiohead,alternative,sad,0.73,93,0.23,0.51,0.40,92,1990,angst|longing|raw,1,238,https://www.youtube.com/results?search_query=Radiohead+Creep+audio
+66,Karma Police,Radiohead,alternative,sad,0.68,76,0.30,0.57,0.48,88,1990,haunting|cinematic|introspective,0,264,https://www.youtube.com/results?search_query=Radiohead+Karma+Police+audio
+67,No Surprises,Radiohead,alternative,sad,0.52,76,0.35,0.58,0.65,87,1990,melancholic|delicate|resigned,0,228,https://www.youtube.com/results?search_query=Radiohead+No+Surprises+audio
+68,Fake Plastic Trees,Radiohead,alternative,sad,0.55,74,0.28,0.52,0.72,85,1990,emotional|wistful|acoustic,0,290,https://www.youtube.com/results?search_query=Radiohead+Fake+Plastic+Trees+audio
+69,Rehab,Amy Winehouse,soul,confident,0.78,110,0.72,0.75,0.35,91,2000,defiant|soulful|catchy,0,213,https://www.youtube.com/results?search_query=Amy+Winehouse+Rehab+audio
+70,Back to Black,Amy Winehouse,soul,sad,0.62,90,0.28,0.60,0.45,90,2000,heartbroken|noir|soulful,0,242,https://www.youtube.com/results?search_query=Amy+Winehouse+Back+to+Black+audio
+71,Valerie,Amy Winehouse,pop,happy,0.76,162,0.82,0.74,0.28,88,2000,upbeat|retro|soulful,0,232,https://www.youtube.com/results?search_query=Amy+Winehouse+Valerie+audio
+72,Do I Wanna Know?,Arctic Monkeys,rock,moody,0.80,85,0.42,0.74,0.15,93,2010,brooding|seductive|indie,0,272,https://www.youtube.com/results?search_query=Arctic+Monkeys+Do+I+Wanna+Know+audio
+73,R U Mine?,Arctic Monkeys,rock,intense,0.88,148,0.53,0.72,0.10,90,2010,driving|raw|powerful,0,200,https://www.youtube.com/results?search_query=Arctic+Monkeys+R+U+Mine+audio
+74,505,Arctic Monkeys,indie pop,sad,0.65,98,0.35,0.55,0.38,87,2000,longing|cinematic|intimate,0,253,https://www.youtube.com/results?search_query=Arctic+Monkeys+505+audio
+75,Fluorescent Adolescent,Arctic Monkeys,indie pop,happy,0.82,144,0.73,0.78,0.12,88,2010,nostalgic|fun|catchy,0,177,https://www.youtube.com/results?search_query=Arctic+Monkeys+Fluorescent+Adolescent+audio
+76,HUMBLE.,Kendrick Lamar,hip-hop,intense,0.90,150,0.42,0.89,0.04,96,2010,bold|minimalist|assertive,1,177,https://www.youtube.com/results?search_query=Kendrick+Lamar+HUMBLE+audio
+77,Alright,Kendrick Lamar,hip-hop,uplifting,0.84,96,0.68,0.83,0.08,90,2010,hopeful|political|energetic,1,219,https://www.youtube.com/results?search_query=Kendrick+Lamar+Alright+audio
+78,Swimming Pools (Drank),Kendrick Lamar,hip-hop,moody,0.78,78,0.38,0.84,0.10,88,2010,dark|introspective|hypnotic,1,312,https://www.youtube.com/results?search_query=Kendrick+Lamar+Swimming+Pools+audio
+79,DNA.,Kendrick Lamar,hip-hop,intense,0.93,138,0.52,0.88,0.05,91,2010,aggressive|proud|intense,1,185,https://www.youtube.com/results?search_query=Kendrick+Lamar+DNA+audio
+80,Love Story,Taylor Swift,pop,happy,0.72,119,0.85,0.75,0.32,94,2000,romantic|fairy-tale|innocent,0,235,https://www.youtube.com/results?search_query=Taylor+Swift+Love+Story+audio
+81,Shake It Off,Taylor Swift,pop,happy,0.87,160,0.91,0.90,0.10,95,2010,carefree|fun|upbeat,0,219,https://www.youtube.com/results?search_query=Taylor+Swift+Shake+It+Off+audio
+82,Blank Space,Taylor Swift,pop,moody,0.80,96,0.61,0.79,0.15,93,2010,sarcastic|seductive|catchy,0,231,https://www.youtube.com/results?search_query=Taylor+Swift+Blank+Space+audio
+83,All Too Well,Taylor Swift,indie pop,sad,0.55,86,0.20,0.50,0.52,90,2010,heartbreak|raw|storytelling,0,329,https://www.youtube.com/results?search_query=Taylor+Swift+All+Too+Well+audio
+84,Rolling in the Deep,Adele,soul,intense,0.86,105,0.55,0.73,0.22,95,2010,powerful|heartbreak|cathartic,0,228,https://www.youtube.com/results?search_query=Adele+Rolling+in+the+Deep+audio
+85,Someone Like You,Adele,pop,sad,0.55,68,0.18,0.48,0.75,96,2010,heartbreak|longing|emotional,0,285,https://www.youtube.com/results?search_query=Adele+Someone+Like+You+audio
+86,Hello,Adele,pop,sad,0.62,79,0.28,0.52,0.60,93,2010,nostalgic|remorseful|powerful,0,295,https://www.youtube.com/results?search_query=Adele+Hello+audio
+87,Thinking Bout You,Frank Ocean,R&B,sad,0.61,98,0.40,0.62,0.38,91,2010,longing|vulnerable|intimate,0,200,https://www.youtube.com/results?search_query=Frank+Ocean+Thinking+Bout+You+audio
+88,Nights,Frank Ocean,R&B,moody,0.74,110,0.45,0.72,0.20,88,2010,nocturnal|introspective|complex,1,307,https://www.youtube.com/results?search_query=Frank+Ocean+Nights+audio
+89,Chanel,Frank Ocean,hip-hop,chill,0.65,96,0.52,0.68,0.28,85,2010,smooth|reflective|cool,1,205,https://www.youtube.com/results?search_query=Frank+Ocean+Chanel+audio
+90,bad guy,Billie Eilish,pop,moody,0.78,135,0.56,0.70,0.10,97,2010,dark|playful|minimalist,0,194,https://www.youtube.com/results?search_query=Billie+Eilish+bad+guy+audio
+91,Ocean Eyes,Billie Eilish,pop,sad,0.42,84,0.60,0.51,0.62,91,2010,dreamy|vulnerable|ethereal,0,200,https://www.youtube.com/results?search_query=Billie+Eilish+Ocean+Eyes+audio
+92,when the party's over,Billie Eilish,pop,sad,0.30,72,0.22,0.42,0.82,89,2010,heartbreaking|sparse|intimate,0,162,https://www.youtube.com/results?search_query=Billie+Eilish+when+the+partys+over+audio
+93,Blinding Lights,The Weeknd,synthwave,happy,0.88,171,0.82,0.81,0.05,98,2010,nostalgic|80s|euphoric,0,200,https://www.youtube.com/results?search_query=The+Weeknd+Blinding+Lights+audio
+94,Starboy,The Weeknd,R&B,confident,0.84,186,0.58,0.84,0.07,93,2010,cool|dark|stylish,1,230,https://www.youtube.com/results?search_query=The+Weeknd+Starboy+audio
+95,Can't Feel My Face,The Weeknd,pop,happy,0.86,111,0.78,0.80,0.08,92,2010,catchy|dark|danceable,0,213,https://www.youtube.com/results?search_query=The+Weeknd+Cant+Feel+My+Face+audio
+96,Uptown Funk,Bruno Mars,funk,happy,0.91,116,0.92,0.90,0.06,97,2010,groovy|fun|retro,0,270,https://www.youtube.com/results?search_query=Bruno+Mars+Uptown+Funk+audio
+97,Just the Way You Are,Bruno Mars,pop,happy,0.68,109,0.87,0.70,0.30,91,2010,romantic|warm|heartfelt,0,220,https://www.youtube.com/results?search_query=Bruno+Mars+Just+the+Way+You+Are+audio
+98,Treasure,Bruno Mars,pop,happy,0.88,115,0.90,0.88,0.10,90,2010,groovy|retro|feel-good,0,176,https://www.youtube.com/results?search_query=Bruno+Mars+Treasure+audio
+99,Umbrella,Rihanna,pop,energetic,0.83,124,0.70,0.83,0.08,94,2000,iconic|catchy|bold,0,276,https://www.youtube.com/results?search_query=Rihanna+Umbrella+audio
+100,We Found Love,Rihanna,electronic,energetic,0.90,128,0.80,0.90,0.05,93,2010,euphoric|festival|summer,0,214,https://www.youtube.com/results?search_query=Rihanna+We+Found+Love+audio
+101,Diamonds,Rihanna,pop,uplifting,0.72,125,0.72,0.72,0.20,91,2010,soaring|inspirational|emotional,0,225,https://www.youtube.com/results?search_query=Rihanna+Diamonds+audio
+102,Lose Yourself,Eminem,hip-hop,intense,0.92,171,0.52,0.74,0.08,97,2000,motivational|intense|triumphant,1,326,https://www.youtube.com/results?search_query=Eminem+Lose+Yourself+audio
+103,Without Me,Eminem,hip-hop,energetic,0.89,130,0.65,0.85,0.05,91,2000,humorous|bombastic|catchy,1,290,https://www.youtube.com/results?search_query=Eminem+Without+Me+audio
+104,Stan,Eminem,hip-hop,sad,0.65,95,0.25,0.68,0.30,90,2000,dark|obsessive|storytelling,1,404,https://www.youtube.com/results?search_query=Eminem+Stan+audio
+105,Thriller,Michael Jackson,pop,intense,0.85,120,0.60,0.86,0.12,98,1980,iconic|spooky|dance,0,358,https://www.youtube.com/results?search_query=Michael+Jackson+Thriller+audio
+106,Billie Jean,Michael Jackson,pop,moody,0.84,117,0.55,0.85,0.07,97,1980,paranoid|groovy|iconic,0,294,https://www.youtube.com/results?search_query=Michael+Jackson+Billie+Jean+audio
+107,Beat It,Michael Jackson,rock,energetic,0.89,139,0.68,0.84,0.10,96,1980,rebellious|iconic|driven,0,258,https://www.youtube.com/results?search_query=Michael+Jackson+Beat+It+audio
+108,Man in the Mirror,Michael Jackson,pop,uplifting,0.72,100,0.80,0.68,0.25,93,1980,inspiring|emotional|gospel,0,318,https://www.youtube.com/results?search_query=Michael+Jackson+Man+in+the+Mirror+audio
+109,Like a Prayer,Madonna,pop,intense,0.87,125,0.72,0.84,0.15,95,1980,gospel|controversial|powerful,0,340,https://www.youtube.com/results?search_query=Madonna+Like+a+Prayer+audio
+110,Vogue,Madonna,electronic,energetic,0.90,131,0.77,0.91,0.07,91,1990,iconic|dance|fierce,0,282,https://www.youtube.com/results?search_query=Madonna+Vogue+audio
+111,Material Girl,Madonna,pop,happy,0.83,126,0.82,0.85,0.12,89,1980,sassy|retro|catchy,0,238,https://www.youtube.com/results?search_query=Madonna+Material+Girl+audio
+112,Purple Rain,Prince,rock,sad,0.62,113,0.35,0.50,0.40,95,1980,epic|emotional|ballad,0,520,https://www.youtube.com/results?search_query=Prince+Purple+Rain+audio
+113,When Doves Cry,Prince,pop,intense,0.82,110,0.62,0.82,0.08,92,1980,unique|iconic|passionate,0,352,https://www.youtube.com/results?search_query=Prince+When+Doves+Cry+audio
+114,Kiss,Prince,funk,happy,0.87,112,0.80,0.88,0.10,90,1980,playful|funky|minimalist,0,199,https://www.youtube.com/results?search_query=Prince+Kiss+audio
+115,No Woman No Cry,Bob Marley,reggae,sad,0.58,66,0.42,0.65,0.50,93,1970,soulful|hopeful|iconic,0,427,https://www.youtube.com/results?search_query=Bob+Marley+No+Woman+No+Cry+audio
+116,Redemption Song,Bob Marley,folk,uplifting,0.42,72,0.68,0.58,0.88,94,1980,acoustic|inspirational|political,0,227,https://www.youtube.com/results?search_query=Bob+Marley+Redemption+Song+audio
+117,One Love,Bob Marley,reggae,happy,0.68,82,0.88,0.78,0.40,92,1970,peaceful|unity|positive,0,172,https://www.youtube.com/results?search_query=Bob+Marley+One+Love+audio
+118,Ring of Fire,Johnny Cash,country,happy,0.78,161,0.78,0.74,0.50,92,1960,classic|passionate|iconic,0,157,https://www.youtube.com/results?search_query=Johnny+Cash+Ring+of+Fire+audio
+119,Hurt,Johnny Cash,folk,sad,0.30,60,0.12,0.38,0.85,93,2000,devastating|raw|cover,0,214,https://www.youtube.com/results?search_query=Johnny+Cash+Hurt+audio
+120,Feeling Good,Nina Simone,jazz,uplifting,0.72,80,0.75,0.55,0.55,91,1960,powerful|liberating|jazz,0,164,https://www.youtube.com/results?search_query=Nina+Simone+Feeling+Good+audio
+121,Sinnerman,Nina Simone,jazz,intense,0.88,142,0.58,0.70,0.30,88,1960,dramatic|gospel|propulsive,0,586,https://www.youtube.com/results?search_query=Nina+Simone+Sinnerman+audio
+122,Respect,Aretha Franklin,soul,energetic,0.88,114,0.88,0.84,0.20,96,1960,iconic|empowering|soulful,0,147,https://www.youtube.com/results?search_query=Aretha+Franklin+Respect+audio
+123,A Natural Woman,Aretha Franklin,soul,uplifting,0.68,84,0.82,0.68,0.48,88,1960,soulful|emotional|feminine,0,176,https://www.youtube.com/results?search_query=Aretha+Franklin+Natural+Woman+audio
+124,Superstition,Stevie Wonder,funk,energetic,0.90,98,0.78,0.88,0.12,95,1970,funky|iconic|groove,0,245,https://www.youtube.com/results?search_query=Stevie+Wonder+Superstition+audio
+125,Isn't She Lovely,Stevie Wonder,pop,happy,0.78,172,0.96,0.80,0.38,90,1970,joyful|sweet|celebratory,0,369,https://www.youtube.com/results?search_query=Stevie+Wonder+Isnt+She+Lovely+audio
+126,Dreams,Fleetwood Mac,pop,chill,0.70,120,0.68,0.73,0.30,94,1970,dreamy|nostalgic|smooth,0,257,https://www.youtube.com/results?search_query=Fleetwood+Mac+Dreams+audio
+127,Go Your Own Way,Fleetwood Mac,rock,intense,0.83,134,0.60,0.73,0.18,89,1970,heartbreak|driving|raw,0,217,https://www.youtube.com/results?search_query=Fleetwood+Mac+Go+Your+Own+Way+audio
+128,The Chain,Fleetwood Mac,rock,intense,0.82,152,0.55,0.72,0.20,91,1970,epic|dark|iconic,0,271,https://www.youtube.com/results?search_query=Fleetwood+Mac+The+Chain+audio
+129,Stairway to Heaven,Led Zeppelin,rock,intense,0.75,82,0.48,0.55,0.42,96,1970,epic|mystical|progressive,0,482,https://www.youtube.com/results?search_query=Led+Zeppelin+Stairway+to+Heaven+audio
+130,Kashmir,Led Zeppelin,rock,intense,0.88,82,0.45,0.62,0.18,90,1970,epic|hypnotic|powerful,0,511,https://www.youtube.com/results?search_query=Led+Zeppelin+Kashmir+audio
+131,Black Dog,Led Zeppelin,rock,energetic,0.90,98,0.62,0.68,0.12,87,1970,raw|groovy|riff-heavy,0,295,https://www.youtube.com/results?search_query=Led+Zeppelin+Black+Dog+audio
+132,Heroes,David Bowie,rock,uplifting,0.80,120,0.72,0.72,0.22,93,1970,anthemic|hopeful|cinematic,0,370,https://www.youtube.com/results?search_query=David+Bowie+Heroes+audio
+133,Let's Dance,David Bowie,pop,happy,0.85,97,0.78,0.80,0.15,90,1980,dance|upbeat|nostalgic,0,243,https://www.youtube.com/results?search_query=David+Bowie+Lets+Dance+audio
+134,Space Oddity,David Bowie,pop,sad,0.52,72,0.32,0.48,0.58,92,1960,existential|cinematic|iconic,0,315,https://www.youtube.com/results?search_query=David+Bowie+Space+Oddity+audio
+135,Come Together,The Beatles,rock,moody,0.75,82,0.50,0.72,0.28,96,1960,hypnotic|groove|iconic,0,260,https://www.youtube.com/results?search_query=The+Beatles+Come+Together+audio
+136,Let It Be,The Beatles,pop,uplifting,0.55,76,0.78,0.52,0.55,97,1960,hopeful|piano|timeless,0,243,https://www.youtube.com/results?search_query=The+Beatles+Let+It+Be+audio
+137,Hey Jude,The Beatles,pop,uplifting,0.75,74,0.82,0.60,0.38,97,1960,anthemic|emotional|classic,0,431,https://www.youtube.com/results?search_query=The+Beatles+Hey+Jude+audio
+138,Bohemian Rhapsody,Queen,rock,intense,0.80,72,0.48,0.60,0.30,98,1970,epic|theatrical|operatic,0,354,https://www.youtube.com/results?search_query=Queen+Bohemian+Rhapsody+audio
+139,We Will Rock You,Queen,rock,energetic,0.85,81,0.65,0.78,0.10,95,1970,anthemic|stadium|iconic,0,121,https://www.youtube.com/results?search_query=Queen+We+Will+Rock+You+audio
+140,Don't Stop Me Now,Queen,rock,happy,0.90,156,0.92,0.84,0.15,96,1970,exhilarating|joyful|iconic,0,209,https://www.youtube.com/results?search_query=Queen+Dont+Stop+Me+Now+audio
+141,Dancing Queen,ABBA,pop,happy,0.85,101,0.95,0.88,0.15,97,1970,euphoric|nostalgic|dance,0,231,https://www.youtube.com/results?search_query=ABBA+Dancing+Queen+audio
+142,Mamma Mia,ABBA,pop,happy,0.83,138,0.88,0.85,0.12,92,1970,fun|catchy|nostalgic,0,212,https://www.youtube.com/results?search_query=ABBA+Mamma+Mia+audio
+143,Gimme! Gimme! Gimme!,ABBA,pop,energetic,0.90,120,0.72,0.88,0.08,91,1970,disco|intense|catchy,0,290,https://www.youtube.com/results?search_query=ABBA+Gimme+Gimme+Gimme+audio
+144,The Winner Takes It All,ABBA,pop,sad,0.60,104,0.28,0.60,0.38,90,1980,heartbreak|powerful|ballad,0,295,https://www.youtube.com/results?search_query=ABBA+The+Winner+Takes+It+All+audio
+145,Smells Like Teen Spirit,Nirvana,grunge,intense,0.90,117,0.55,0.72,0.08,97,1990,rebellious|loud|iconic,0,301,https://www.youtube.com/results?search_query=Nirvana+Smells+Like+Teen+Spirit+audio
+146,Come as You Are,Nirvana,grunge,moody,0.72,120,0.42,0.68,0.18,91,1990,atmospheric|melancholic|alternative,0,219,https://www.youtube.com/results?search_query=Nirvana+Come+as+You+Are+audio
+147,Heart-Shaped Box,Nirvana,grunge,intense,0.83,101,0.35,0.65,0.12,88,1990,dark|angst|powerful,0,281,https://www.youtube.com/results?search_query=Nirvana+Heart+Shaped+Box+audio
+148,Under the Bridge,Red Hot Chili Peppers,rock,sad,0.65,85,0.38,0.60,0.40,93,1990,lonely|reflective|melodic,0,264,https://www.youtube.com/results?search_query=Red+Hot+Chili+Peppers+Under+the+Bridge+audio
+149,Californication,Red Hot Chili Peppers,rock,moody,0.70,96,0.45,0.65,0.30,91,1990,introspective|surreal|indie,0,324,https://www.youtube.com/results?search_query=Red+Hot+Chili+Peppers+Californication+audio
+150,Give It Away,Red Hot Chili Peppers,rock,energetic,0.92,103,0.72,0.82,0.08,88,1990,frenetic|funky|raw,1,268,https://www.youtube.com/results?search_query=Red+Hot+Chili+Peppers+Give+It+Away+audio
+151,The Scientist,Coldplay,pop,sad,0.48,75,0.22,0.48,0.72,93,2000,melancholic|piano|romantic,0,307,https://www.youtube.com/results?search_query=Coldplay+The+Scientist+audio
+152,Yellow,Coldplay,pop,uplifting,0.62,87,0.68,0.62,0.50,94,2000,emotional|romantic|acoustic,0,267,https://www.youtube.com/results?search_query=Coldplay+Yellow+audio
+153,Fix You,Coldplay,pop,sad,0.52,69,0.30,0.50,0.65,94,2000,cathartic|uplifting|emotional,0,295,https://www.youtube.com/results?search_query=Coldplay+Fix+You+audio
+154,Clocks,Coldplay,pop,intense,0.80,130,0.52,0.72,0.18,91,2000,urgent|anthemic|piano,0,307,https://www.youtube.com/results?search_query=Coldplay+Clocks+audio
+155,Wonderwall,Oasis,rock,sad,0.60,87,0.48,0.62,0.58,96,1990,nostalgic|romantic|iconic,0,258,https://www.youtube.com/results?search_query=Oasis+Wonderwall+audio
+156,Champagne Supernova,Oasis,rock,uplifting,0.70,90,0.58,0.60,0.35,88,1990,dreamy|epic|anthemic,0,454,https://www.youtube.com/results?search_query=Oasis+Champagne+Supernova+audio
+157,Don't Look Back in Anger,Oasis,rock,uplifting,0.72,127,0.68,0.62,0.42,90,1990,anthemic|hopeful|classic,0,257,https://www.youtube.com/results?search_query=Oasis+Dont+Look+Back+in+Anger+audio
+158,Teardrop,Massive Attack,trip-hop,sad,0.38,93,0.32,0.52,0.50,90,1990,haunting|ethereal|cinematic,0,316,https://www.youtube.com/results?search_query=Massive+Attack+Teardrop+audio
+159,Unfinished Sympathy,Massive Attack,trip-hop,intense,0.72,94,0.42,0.62,0.35,86,1990,dramatic|orchestral|raw,0,300,https://www.youtube.com/results?search_query=Massive+Attack+Unfinished+Sympathy+audio
+160,Glory Box,Portishead,trip-hop,sad,0.58,90,0.28,0.55,0.40,86,1990,sultry|melancholic|cinematic,0,322,https://www.youtube.com/results?search_query=Portishead+Glory+Box+audio
+161,Sour Times,Portishead,trip-hop,moody,0.52,88,0.25,0.52,0.45,83,1990,dark|atmospheric|noir,0,255,https://www.youtube.com/results?search_query=Portishead+Sour+Times+audio
+162,Loser,Beck,alternative,moody,0.72,84,0.52,0.68,0.38,88,1990,slacker|ironic|lo-fi,0,239,https://www.youtube.com/results?search_query=Beck+Loser+audio
+163,E-Pro,Beck,rock,energetic,0.87,129,0.65,0.80,0.10,82,2000,stomping|riff-heavy|energetic,0,232,https://www.youtube.com/results?search_query=Beck+E-Pro+audio
+164,Hey Ya!,OutKast,pop,happy,0.91,160,0.92,0.90,0.10,95,2000,euphoric|irresistible|catchy,0,235,https://www.youtube.com/results?search_query=OutKast+Hey+Ya+audio
+165,Ms. Jackson,OutKast,hip-hop,sad,0.72,90,0.48,0.78,0.15,90,2000,remorseful|storytelling|southern,0,274,https://www.youtube.com/results?search_query=OutKast+Ms+Jackson+audio
+166,B.O.B.,OutKast,hip-hop,energetic,0.95,155,0.72,0.92,0.06,87,2000,explosive|frenetic|genre-bending,1,257,https://www.youtube.com/results?search_query=OutKast+BOB+audio
+167,Doo Wop (That Thing),Lauryn Hill,R&B,energetic,0.82,104,0.72,0.83,0.22,89,1990,iconic|soulful|empowering,0,285,https://www.youtube.com/results?search_query=Lauryn+Hill+Doo+Wop+That+Thing+audio
+168,Ex-Factor,Lauryn Hill,R&B,sad,0.52,84,0.30,0.55,0.50,86,1990,heartbreak|soulful|vulnerable,0,310,https://www.youtube.com/results?search_query=Lauryn+Hill+Ex+Factor+audio
+169,Smooth Operator,Sade,jazz,chill,0.58,88,0.68,0.68,0.42,90,1980,sophisticated|smooth|nocturnal,0,282,https://www.youtube.com/results?search_query=Sade+Smooth+Operator+audio
+170,No Ordinary Love,Sade,R&B,sad,0.52,72,0.32,0.55,0.55,88,1990,longing|ethereal|deep,0,399,https://www.youtube.com/results?search_query=Sade+No+Ordinary+Love+audio
+171,Waterfalls,TLC,R&B,sad,0.65,88,0.42,0.72,0.28,92,1990,emotional|conscious|storytelling,0,261,https://www.youtube.com/results?search_query=TLC+Waterfalls+audio
+172,No Scrubs,TLC,R&B,confident,0.78,100,0.68,0.80,0.15,90,1990,sassy|empowering|catchy,0,214,https://www.youtube.com/results?search_query=TLC+No+Scrubs+audio
+173,Creep,TLC,R&B,sad,0.62,82,0.35,0.68,0.30,87,1990,confessional|sultry|bittersweet,0,270,https://www.youtube.com/results?search_query=TLC+Creep+audio
+174,Say My Name,Destiny's Child,R&B,intense,0.83,102,0.68,0.84,0.12,93,1990,fierce|accusatory|catchy,0,236,https://www.youtube.com/results?search_query=Destinys+Child+Say+My+Name+audio
+175,Survivor,Destiny's Child,pop,uplifting,0.86,118,0.80,0.85,0.10,91,2000,empowering|triumphant|bounce,0,245,https://www.youtube.com/results?search_query=Destinys+Child+Survivor+audio
+176,Bootylicious,Destiny's Child,R&B,energetic,0.88,95,0.80,0.88,0.08,88,2000,fun|confident|dance,0,218,https://www.youtube.com/results?search_query=Destinys+Child+Bootylicious+audio
+177,Work It,Missy Elliott,hip-hop,energetic,0.90,102,0.75,0.90,0.07,90,2000,fierce|playful|innovative,1,242,https://www.youtube.com/results?search_query=Missy+Elliott+Work+It+audio
+178,Get Ur Freak On,Missy Elliott,hip-hop,energetic,0.88,98,0.65,0.88,0.06,88,2000,innovative|hypnotic|dance,1,213,https://www.youtube.com/results?search_query=Missy+Elliott+Get+Ur+Freak+On+audio
+179,Yeah!,Usher,R&B,energetic,0.93,104,0.80,0.92,0.05,94,2000,high-energy|catchy|dance,1,250,https://www.youtube.com/results?search_query=Usher+Yeah+audio
+180,U Got It Bad,Usher,R&B,sad,0.58,92,0.40,0.65,0.30,87,2000,heartbroken|vulnerable|smooth,0,268,https://www.youtube.com/results?search_query=Usher+U+Got+It+Bad+audio
+181,Confessions Part II,Usher,R&B,sad,0.68,88,0.35,0.72,0.20,85,2000,remorseful|emotional|storytelling,1,285,https://www.youtube.com/results?search_query=Usher+Confessions+Part+II+audio
+182,Fantasy,Mariah Carey,R&B,happy,0.85,100,0.88,0.87,0.12,93,1990,playful|euphoric|carefree,0,250,https://www.youtube.com/results?search_query=Mariah+Carey+Fantasy+audio
+183,We Belong Together,Mariah Carey,R&B,sad,0.60,88,0.45,0.65,0.35,90,2000,heartbreak|longing|soulful,0,242,https://www.youtube.com/results?search_query=Mariah+Carey+We+Belong+Together+audio
+184,Emotions,Mariah Carey,pop,happy,0.88,130,0.90,0.87,0.10,88,1990,euphoric|powerful|impressive,0,258,https://www.youtube.com/results?search_query=Mariah+Carey+Emotions+audio
+185,Tiny Dancer,Elton John,rock,chill,0.58,100,0.72,0.55,0.52,92,1970,nostalgic|cinematic|classic,0,291,https://www.youtube.com/results?search_query=Elton+John+Tiny+Dancer+audio
+186,Rocket Man,Elton John,pop,sad,0.52,126,0.48,0.52,0.48,91,1970,existential|nostalgic|beautiful,0,271,https://www.youtube.com/results?search_query=Elton+John+Rocket+Man+audio
+187,Crocodile Rock,Elton John,rock,happy,0.88,152,0.88,0.85,0.15,89,1970,fun|nostalgic|dance,0,231,https://www.youtube.com/results?search_query=Elton+John+Crocodile+Rock+audio
+188,Hotel California,Eagles,rock,moody,0.68,75,0.35,0.58,0.30,95,1970,dark|cinematic|iconic,0,391,https://www.youtube.com/results?search_query=Eagles+Hotel+California+audio
+189,Take It Easy,Eagles,rock,chill,0.72,139,0.78,0.70,0.38,88,1970,breezy|nostalgic|easygoing,0,213,https://www.youtube.com/results?search_query=Eagles+Take+It+Easy+audio
+190,Everlong,Foo Fighters,rock,intense,0.88,158,0.65,0.73,0.15,93,1990,anthemic|passionate|loud,0,249,https://www.youtube.com/results?search_query=Foo+Fighters+Everlong+audio
+191,Best of You,Foo Fighters,rock,intense,0.90,128,0.68,0.75,0.10,88,2000,empowering|raw|emotional,0,256,https://www.youtube.com/results?search_query=Foo+Fighters+Best+of+You+audio
+192,Mr. Brightside,The Killers,rock,intense,0.85,148,0.62,0.76,0.12,97,2000,iconic|jealous|anthemic,0,222,https://www.youtube.com/results?search_query=The+Killers+Mr+Brightside+audio
+193,Human,The Killers,pop,uplifting,0.80,128,0.68,0.78,0.15,89,2000,anthemic|synth|hopeful,0,245,https://www.youtube.com/results?search_query=The+Killers+Human+audio
+194,Somebody Told Me,The Killers,rock,energetic,0.87,138,0.70,0.80,0.10,86,2000,driving|catchy|indie,0,197,https://www.youtube.com/results?search_query=The+Killers+Somebody+Told+Me+audio
+195,With or Without You,U2,rock,sad,0.62,113,0.30,0.55,0.38,93,1980,longing|emotional|anthemic,0,295,https://www.youtube.com/results?search_query=U2+With+or+Without+You+audio
+196,One,U2,rock,sad,0.55,97,0.40,0.52,0.45,92,1990,profound|emotional|timeless,0,276,https://www.youtube.com/results?search_query=U2+One+audio
+197,Where the Streets Have No Name,U2,rock,uplifting,0.85,126,0.72,0.72,0.12,91,1980,anthemic|transcendent|epic,0,327,https://www.youtube.com/results?search_query=U2+Where+the+Streets+Have+No+Name+audio
+198,Boulevard of Broken Dreams,Green Day,rock,sad,0.72,168,0.28,0.62,0.18,93,2000,lonely|introspective|punk,0,258,https://www.youtube.com/results?search_query=Green+Day+Boulevard+of+Broken+Dreams+audio
+199,American Idiot,Green Day,punk rock,intense,0.92,186,0.55,0.80,0.06,91,2000,angry|political|anthemic,0,173,https://www.youtube.com/results?search_query=Green+Day+American+Idiot+audio
+200,Good Riddance (Time of Your Life),Green Day,folk rock,sad,0.42,92,0.58,0.52,0.82,90,1990,nostalgic|acoustic|reflective,0,153,https://www.youtube.com/results?search_query=Green+Day+Good+Riddance+audio

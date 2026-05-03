@@ -1,0 +1,38 @@
+[
+  {
+    "id": "genre_pop",
+    "type": "genre",
+    "name": "pop",
+    "content": "Pop music is defined by catchy hooks, polished studio production, and verse-chorus song structures designed for broad appeal. Tempos typically range from 100 to 140 BPM with high danceability and bright, positive valence. Modern pop layers synthesizers, programmed drums, and vocal harmonies to create an immediately accessible sound. Listeners turn to pop for mood-lifting, social settings, workouts, and everyday background listening. Key characteristics: repetitive melodic hooks, clean mix, radio-friendly song lengths (3-4 minutes)."
+  },
+  {
+    "id": "genre_rock",
+    "type": "genre",
+    "name": "rock",
+    "content": "Rock music is driven by electric guitars, bass, and live drums, creating a raw, powerful sonic texture. Energy levels are typically high (0.7-1.0), with tempos ranging from 110 to 160 BPM. Rock encompasses a wide emotional spectrum — from anthemic and triumphant to dark and intense. The guitar riff is the central compositional unit. Listeners seek out rock for adrenaline, catharsis, driving, and emotional release. Subgenres include classic rock, alternative, hard rock, and indie rock."
+  },
+  {
+    "id": "genre_lofi",
+    "type": "genre",
+    "name": "lofi",
+    "content": "Lo-fi hip hop is defined by deliberately imperfect production: vinyl crackle, tape hiss, slightly off-beat samples, and warm, saturated tones. Tempos are slow, typically 60 to 90 BPM, and the overall energy is very low (0.1-0.4). Melodies are simple, repetitive, and non-intrusive — designed to sit in the background without demanding attention. Heavy influence from jazz chord progressions and soul samples. Listeners use lo-fi for studying, reading, late-night work sessions, and relaxation. High acousticness and low danceability are characteristic."
+  },
+  {
+    "id": "genre_indie_pop",
+    "type": "genre",
+    "name": "indie pop",
+    "content": "Indie pop blends the melodic accessibility of pop with the artistic independence and emotional vulnerability of alternative music. Production is often understated — jangly guitars, gentle percussion, and intimate vocals sit alongside synth textures. Tempos range from 90 to 130 BPM with moderate energy. The emotional tone is often bittersweet: melancholic but not depressing, wistful but not sad. Listeners are drawn to indie pop for its authenticity, thoughtful lyrics, and ability to feel both personal and universal."
+  },
+  {
+    "id": "genre_electronic",
+    "type": "genre",
+    "name": "electronic",
+    "content": "Electronic music is built entirely from synthesizers, drum machines, samplers, and digital audio workstations. Characterized by programmed rhythms, bass-heavy drops, and textural sound design. Danceability and energy are typically high (0.7-1.0), with tempos from 120 to 145 BPM in house and techno variants. Acousticness is near zero. The genre spans ambient, house, techno, EDM, and downtempo. Listeners use electronic music for dancing, clubbing, running, and immersive listening experiences. The production itself is the instrument."
+  },
+  {
+    "id": "genre_jazz",
+    "type": "genre",
+    "name": "jazz",
+    "content": "Jazz is defined by improvisation, complex chord extensions (7ths, 9ths, 11ths), and swing rhythm. Instrumentation typically includes piano, double bass, drums, trumpet, and saxophone. Acousticness is very high (0.6-0.95). Energy and tempo vary widely — bebop is fast and intense (180+ BPM) while cool jazz and bossa nova are gentle and contemplative (60-100 BPM). Jazz rewards active listening: melodies shift, soloists respond to each other, and no two performances are identical. Listeners seek jazz for intellectual engagement, sophisticated ambience, dinner settings, and late-night introspection."
+  }
+]

@@ -1,113 +1,106 @@
-# 🎧 Model Card: Music Recommender Simulation
+# 🎧 Model Card: Music Recommender (updated to match code)
 
-## 1. Model Name  
+This model card summarizes the implementation in `src/recommender.py` and `src/rag_recommender.py` and documents the dataset fields, scoring behavior, retrieval/RAG setup, strengths, limitations, and evaluation notes.
 
-Give your model a short, descriptive name.  
-Example: **Music Controller**  
+## 1. Model Name
 
----
-
-## 2. Intended Use  
-
-Describe what your recommender is designed to do and who it is for. 
-
-Prompts:  
-
-- What kind of recommendations does it generate  
-- What assumptions does it make about the user  
-- Is this for real users or classroom exploration  
-
-This reccomender is for people who don't have time to sit and discover new music. This assumes the user's prefer to listen to music from their favorite genre. This is for classroom exploration, since most real songs don't have actual energy percentages.
----
-
-## 3. How the Model Works  
-
-Explain your scoring approach in simple language.  
-
-Prompts:  
-
-- What features of each song are used (genre, energy, mood, etc.)  
-- What user preferences are considered  
-- How does the model turn those into a score  
-- What changes did you make from the starter logic  
-
-This takes in your favorite genre, mood, your target energy, enjoyment of acoustics, and your likes & skips. Then, we calculate a number and use that to determine tyour favorite song. We consider everything, though they're all weighed differently. 30% of your score is from the genre, 25% from energy, 20% from the mood, 15% for acoustics, and 10% for feedback.
+Music Recommender Simulation
 
 ---
 
-## 4. Data  
+## 2. Intended Use
 
-Describe the dataset the model uses.  
+This system produces personalized song suggestions for interactive demos and classroom exploration. It is intended to help users discover tracks by combining simple preference matching (genre, mood, energy) with retrieval-augmented explanations. It assumes user-provided preferences (genre, mood, numeric energy/acousticness, and optional lists of liked/skipped songs). This repository is a demonstration and not a production-ready recommender.
 
-Prompts:  
-
-- How many songs are in the catalog  
-- What genres or moods are represented  
-- Did you add or remove data  
-- Are there parts of musical taste missing in the dataset  
-There are 20 songs total in the catalog. The genres represented are pop, lofi, rock, ambient, jazz, synthwave, indie pop, electronic, country, classical, reggae, metal, folk, and blues. The moods are uplifting, melancholic, adventurous, peaceful, angry, joyful, romantic, confident, sad, energetic, happy, focused, moody, relaxed, chill and intense. I only added more songs to expand the data set. I don't think anything is missing.
 ---
 
-## 5. Strengths  
+## 3. How the Model Works (code-accurate)
 
-Where does your system seem to work well  
+- Core scoring: implemented in `score_song()` in `src/recommender.py`. The default scoring weights are:
 
-Prompts:  
+	- `genre`: 0.30
+	- `mood`: 0.25
+	- `energy`: 0.25
+	- `acousticness`: 0.15
+	- `feedback` (previous likes/ skips): 0.05
 
-- User types for which it gives reasonable results  
-- Any patterns you think your scoring captures correctly  
-- Cases where the recommendations matched your intuition  
-My system gives the best results for users who like a specific genre (and they can match the rest of the results to their preferences). The patterns mainly consist of matching slow energy songs to their moods (and vice versa). 
+- Ranking strategies: `RANKING_STRATEGIES` defines three pre-set weight distributions (`balanced`, `genre_first`, `mood_first`) that the functional `recommend_songs()` can use instead of the default weights. These strategies include additional dimensions such as `popularity`, `decade`, and `mood_tags` for alternate ranking behavior.
+
+- Feature handling:
+	- Song numeric fields in CSV are normalized (0–1 in CSV → 1–10 used for scoring for energy and acousticness).
+	- Genre and mood matching are binary (10 for exact match, 0 otherwise).
+	- Feedback: exact title matches or id-based likes/skips are used to boost or penalize scores (skips subtract a small penalty).
+
+- Diversity re-ranking: after scoring, `diversity_rerank()` greedily enforces diversity constraints with defaults `max_per_artist=2` and `max_per_genre=3`, pushing overflow items into an overflow list that can fill remaining slots.
+
+- Object-oriented and functional APIs:
+	- `Recommender` class provides OOP interface with `recommend()` and `explain_recommendation()`.
+	- `recommend_songs()` is the functional entrypoint used by `src/main.py`.
+
 ---
 
-## 6. Limitations and Bias 
+## 4. Retrieval / RAG Details (what the code does)
 
-Where the system struggles or behaves unfairly. 
+- `src/rag_recommender.py` implements a retrieval-augmented component (`RAGRecommender`) that:
+	- Uses `sentence_transformers` (`all-MiniLM-L6-v2`) to produce embeddings.
+	- Uses `chromadb` as an embedding store/semantic index for songs (`songs` collection) and a separate `context` collection for genre/mood documents.
+	- `retrieve()` returns the most semantically similar songs for a user profile by embedding a short natural-language query built from the profile.
+	- `build_index()` and `build_context_index()` create Chroma collections from the songs and knowledge-base documents respectively.
+	- `generate_recommendation()` builds a prompt (including up to 3 top songs and fetched context documents) and calls Groq's chat completions API (configured with `GROQ_API_KEY`) to produce warm, human-readable explanations. The code logs to `rag_recommender.log`.
 
-Prompts:  
+Note: the RAG pipeline requires `sentence-transformers`, `chromadb`, and a Groq/Llama API key to call the cloud LLM. If those services are not available the pipeline still supports local ranking via `recommender.py`.
 
-- Features it does not consider  
-- Genres or moods that are underrepresented  
-- Cases where the system overfits to one preference  
-- Ways the scoring might unintentionally favor some users  
-This system does not consider danceability, valence, or tempo. Some genres that maybe under represented are everything besides lofi and underpresented moods are everythign besides chill. The scoring also favors users who like genres with high energy.
 ---
 
-## 7. Evaluation  
+## 5. Data
 
-How you checked whether the recommender behaved as expected. 
+- Primary catalog: `data/songs.csv`. `load_songs()` expects these fields (CSV column names):
 
-Prompts:  
+	`id, title, artist, genre, mood, energy, tempo_bpm, valence, danceability, acousticness, popularity, release_decade, mood_tags, explicit, duration_sec, youtube_url`
 
-- Which user profiles you tested  
-- What you looked for in the recommendations  
-- What surprised you  
-- Any simple tests or comparisons you ran  
+- Knowledge-base docs: `data/genre_docs.json` and `data/mood_docs.json` (used by `RAGRecommender.build_context_index()`) — each entry should provide `id` and `content` fields.
 
-No need for numeric metrics unless you created some.
-I tested a generic case, edge cases (four) and one case of me. I looked for the genre first, then the energy. What surprised me was how much genre plays a role into the recommnedation. For my basic case, I wanted someone who like electronic music with high energy. For my first edge case, I wanted the maximum energy with electronic music. My second edge case was as low energy as it got. My third case was having no favorite genre or mood. My fourth edge case had some likes and dislikes. My fifth case was my own tastes that had songs that were indie pop and chill, but with high enegry.
+- The included demo dataset is small (a classroom-sized catalog). Treat evaluation as qualitative unless extended with larger ground-truth data.
+
 ---
 
-## 8. Future Work  
+## 6. Strengths
 
-Ideas for how you would improve the model next.  
+- Transparent, interpretable scoring: per-song breakdown and human-readable reasons are produced by `score_song()` and `explain_recommendation()`.
+- Fast deterministic baseline: the functional `recommend_songs()` and `Recommender` class allow quick experiments without heavy dependencies.
+- RAG adds contextual explanations when the embedding index and Groq LLM are enabled — improving explainability and user-facing copy.
 
-Prompts:  
-
-- Additional features or preferences  
-- Better ways to explain recommendations  
-- Improving diversity among the top results  
-- Handling more complex user tastes  
-I would add more diverse songs to test with, along with a more concrete scoring plan. I also will try to account for tempo, valence and danceability.
 ---
 
-## 9. Personal Reflection  
+## 7. Limitations & Bias
 
-A few sentences about your experience.  
+- Binary genre/mood matching means non-exact or multi-genre tastes are not well-handled.
+- The default scoring ignores several available song features (e.g., `valence`, `danceability`, `tempo_bpm`) unless you switch to a custom strategy that uses them — so certain musical attributes are underutilized.
+- Small demo dataset can over-emphasize frequent artists/genres; diversity rerank attempts mitigation but is heuristic.
+- RAG requires an external embedding model and Chroma/Groq services; using cloud LLMs can introduce cost and external-data bias.
 
-Prompts:  
+---
 
-- What you learned about recommender systems  
-- Something unexpected or interesting you discovered  
-- How this changed the way you think about music recommendation apps  
-I learned that recommender systems are algorithm based and that those algorithms need to be perfect before we implement them. Something interesting I discovered was how much math is necessary for this. This changed the way I think about music apps, since now I'm going to look into this more, rather than just thinking it gave me similar artists.
+## 8. Evaluation Summary (what I ran / observed)
+
+- Unit tests in `tests/` exercise `Recommender` behavior and `score_song()` edge cases. Run them with `pytest -q`.
+- Manual CLI runs (`src/main.py`) demonstrate the three ranking strategies (`balanced`, `genre_first`, `mood_first`) and show score breakdowns and ASCII tables.
+- With RAG enabled (index built and Groq key set) the system returns short LLM-written explanations anchored to retrieved context documents — useful for UX but dependent on external services.
+
+---
+
+## 9. Future Work
+
+- Extend scoring to incorporate `valence`, `danceability`, and `tempo_bpm` directly and expose them as strategy-weighted dimensions.
+- Add configurable, persisted vector store (FAISS/Chroma with on-disk persistence) and batch embedding scripts for larger catalogs.
+- Add offline fallback prompts for explanation generation when Groq/LLM calls fail, to keep UX stable.
+
+---
+
+## 10. Personal Reflection
+
+Working through this repository reinforced the value of modular design: keep ranking, retrieval, and UI separate so you can iterate on one part without breaking others. The RAG pattern greatly improves conversational explanations, but introduces engineering overhead (embeddings, index management, and an LLM). For a production recommender, we'd pair the current interpretable scoring with quantitative evaluation (precision@k, nDCG) on a larger dataset.
+
+---
+
+See the implementation in `src/recommender.py` and `src/rag_recommender.py` for exact code paths and `tests/` for unit tests.
