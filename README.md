@@ -1,6 +1,6 @@
-# Music Recommender (Modules 1–3)
+# Music Recommender (Modules 3)
 
-Music Recommender is a lightweight recommendation system built during Modules 1–3 of the Applied AI Systems curriculum. Its original goal was to explore hybrid recommendation techniques (content + retrieval-augmented generation) and expose them through both a command-line and a simple web interface so non-technical users can get personalized music suggestions and short natural-language explanations.
+Music Recommender is a lightweight recommendation system built during Module 3 of the Applied AI Systems curriculum. Its original goal was to explore hybrid recommendation techniques (content + retrieval-augmented generation) and expose them through both a command-line and a simple web interface so non-technical users can get personalized music suggestions and short natural-language explanations.
 
 **Title & Summary**
 

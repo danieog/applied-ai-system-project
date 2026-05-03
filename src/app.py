@@ -6,8 +6,13 @@ from recommender import load_songs, recommend_songs
 from rag_recommender import RAGRecommender, UserProfile, Song
 
 PROFILES_PATH = "../data/profiles.json"
-GENRES = ["pop", "rock", "lofi", "indie pop", "electronic", "jazz"]
-MOODS = ["happy", "chill", "intense", "sad", "energetic"]
+GENRES = sorted([
+    "alternative", "country", "electronic", "folk", "folk rock", "funk",
+    "grunge", "hip-hop", "indie pop", "jazz", "J-pop", "K-pop", "lofi",
+    "pop", "punk rock", "R&B", "reggae", "rock", "soul", "synth-pop",
+    "synthwave", "trip-hop",
+])
+MOODS = ["happy", "energetic", "uplifting", "confident", "chill", "moody", "intense", "sad"]
 STRATEGIES = ["balanced", "genre_first", "mood_first"]
 STRATEGY_LABELS = {
     "balanced": "Balanced (all factors equal)",

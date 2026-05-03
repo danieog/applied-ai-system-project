@@ -2,9 +2,11 @@
 
 This model card summarizes the implementation in `src/recommender.py` and `src/rag_recommender.py` and documents the dataset fields, scoring behavior, retrieval/RAG setup, strengths, limitations, and evaluation notes.
 
+LOOM LINK: https://www.loom.com/share/de9033fcf82644dda5d9be19604600c6
+
 ## 1. Model Name
 
-Music Recommender Simulation
+Music Recommender
 
 ---
 
