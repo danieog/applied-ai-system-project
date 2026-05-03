@@ -107,5 +107,5 @@ These examples show the dual behavior: (1) filtering/scoring for direct preferen
 
 **Reflection**
 
-This project taught me how to design an end-to-end AI-powered feature with pragmatic constraints: keep components decoupled, make reproducible setups, and prefer simple solutions that are easy to reason about. I learned the practical trade-offs between explainability and latency, and how retrieval (RAG) can improve user-facing explanations even with modest resources.
+This project taught me how to design an end-to-end AI-powered feature with pragmatic constraints: keep components decoupled, make reproducible setups, and prefer simple solutions that are easy to reason about. I learned the practical trade-offs between explainability and latency, and how retrieval (RAG) can improve user-facing explanations even with modest resources. One thing I would add in the future is having favorite artists and an account sign-in/sign-up feature where users can create their work.
 

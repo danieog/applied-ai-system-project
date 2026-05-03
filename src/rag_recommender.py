@@ -45,6 +45,7 @@ class RAGRecommender:
         self.chroma_client = chromadb.Client()
         self.collection = None         # songs index
         self.context_collection = None  # genre/mood knowledge-base index
+        self.last_context_docs: List[str] = []  # context retrieved in last generate call
 
     def build_index(self, songs: List[Dict]) -> None:
         """Embed all songs and store in ChromaDB for semantic retrieval."""
@@ -135,6 +136,7 @@ class RAGRecommender:
         knowledge-base documents and injects them into the prompt before calling the LLM.
         """
         context_docs = self.retrieve_context(user, k=2)
+        self.last_context_docs = context_docs  # expose for UI display
         prompt = self._build_prompt(user, top_songs[:3], context_docs)
         logger.info(
             "Sending prompt to Groq (%d chars, %d context docs)",

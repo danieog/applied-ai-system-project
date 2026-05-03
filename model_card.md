@@ -94,6 +94,9 @@ Note: the RAG pipeline requires `sentence-transformers`, `chromadb`, and a Groq/
 - Extend scoring to incorporate `valence`, `danceability`, and `tempo_bpm` directly and expose them as strategy-weighted dimensions.
 - Add configurable, persisted vector store (FAISS/Chroma with on-disk persistence) and batch embedding scripts for larger catalogs.
 - Add offline fallback prompts for explanation generation when Groq/LLM calls fail, to keep UX stable.
+- Adding a login based system where users have recommendations solely for their account.
+- Addin a feature that allows favorite artists to have a slight point boost.
+- Having a "disliked songs" and/or "disliked artists" feature that negatively affects the total score.
 
 ---
 
