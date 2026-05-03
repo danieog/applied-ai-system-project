@@ -19,4 +19,4 @@ venv/
 .env
 
 # The rag logs
-rag_recommender_logs.txt
+rag_recommender_logs.txt 
