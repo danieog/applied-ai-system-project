@@ -17,3 +17,6 @@ venv/
 
 # Environment variables (never commit secrets)
 .env
+
+# The rag logs
+rag_recommender_logs.txt
