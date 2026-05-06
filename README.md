@@ -1,10 +1,10 @@
-# Music Recommender (Modules 3)
+# MelodAI 
 
-Music Recommender is a lightweight recommendation system built during Module 3 of the Applied AI Systems curriculum. Its original goal was to explore hybrid recommendation techniques (content + retrieval-augmented generation) and expose them through both a command-line and a simple web interface so non-technical users can get personalized music suggestions and short natural-language explanations.
+MelodAI is a lightweight recommendation system built during Module 3 of the Applied AI Systems curriculum. Its original goal was to explore hybrid recommendation techniques (content + retrieval-augmented generation) and expose them through both a command-line and a simple web interface so non-technical users can get personalized music suggestions and short natural-language explanations.
 
 **Title & Summary**
 
-Music Recommender delivers personalized song suggestions based on user preferences (genre, mood, keywords). It combines a classical recommender core with a retrieval-augmented component that uses short document embeddings and lookup to provide contextualized suggestions and rationale. This project matters because it demonstrates end-to-end AI system design: data, model logic, UI, and testing — all reproducible and easy to extend.
+MelodAI delivers personalized song suggestions based on user preferences (genre, mood, keywords). It combines a classical recommender core with a retrieval-augmented component that uses short document embeddings and lookup to provide contextualized suggestions and rationale. This project matters because it demonstrates end-to-end AI system design: data, model logic, UI, and testing — all reproducible and easy to extend.
 
 **Architecture Overview**
 
